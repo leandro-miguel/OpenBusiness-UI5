@@ -1,0 +1,29 @@
+<core:FragmentDefinition fragmentName="UserMultiHelpDialog"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout"
+	xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+	<Dialog title="{i18n>requester}" class="sapUiContentPadding" contentHeight="80%">
+		<content>
+			<OverflowToolbar>
+				<SearchField search=".onUserMultiHelpSearch" width="100%" />
+			</OverflowToolbar>
+			<List
+				id="userMultiList"
+				items="{oModel>/UserList}"
+				busy="{oModel>/userListDialogBusy}"
+				mode="MultiSelect" 
+				includeItemInSelection="true">
+				<StandardListItem
+					title="{oModel>UserCode}"
+					description="{oModel>UserName}" />
+			</List>
+		</content>
+		<buttons>
+			<Button icon="sap-icon://arrow-left" press="onUserMultiHelpPrevious" enabled="{oModel>/previousDialogButtonEnabled}" type="Emphasized" />
+			<Button icon="sap-icon://arrow-right"  enabled="{oModel>/nextDialogButtonEnabled}" press="onUserMultiHelpNext" type="Emphasized" />
+			<Button text="{i18n>save}" press="onUserMultiHelpSave" type="Emphasized"/>
+			<Button text="{i18n>cancel}" press="onUserMultiHelpClose" type="Ghost"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,30 @@
+<core:FragmentDefinition fragmentName="employeeHelpDialog"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout"
+	xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+	<Dialog title="{i18n>requester}" class="sapUiContentPadding" contentHeight="80%">
+		<content>
+			<OverflowToolbar>
+				<SearchField search=".onEmployeeHelpSearch" width="100%" />
+			</OverflowToolbar>
+			<List
+				id="employeeList"
+				items="{oModel>/EmployeeList}"
+				busy="{oModel>/employeeListDialogBusy}"
+				mode="SingleSelectMaster"
+				selectionChange="onEmployeeHelpSave"
+				includeItemInSelection="true">
+				<StandardListItem
+					selected="{oModel>SelectedEmployee}"
+					title="{oModel>FirstName} {oModel>LastName}"
+					description="{oModel>EmployeeID}" />
+			</List>
+		</content>
+		<buttons>
+			<Button id="EmployeePrevious" icon="sap-icon://arrow-left" press="onEmployeeHelpPrevious" enabled="{oModel>/previousDialogButtonEnabled}"  type="Emphasized"/>
+			<Button id="EmployeeNext" icon="sap-icon://arrow-right" press="onEmployeeHelpNext" enabled="{oModel>/nextDialogButtonEnabled}" type="Emphasized"/>
+			<Button id="EmployeeCancel" text="{i18n>cancel}" press="onEmployeeHelpClose" type="Ghost"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

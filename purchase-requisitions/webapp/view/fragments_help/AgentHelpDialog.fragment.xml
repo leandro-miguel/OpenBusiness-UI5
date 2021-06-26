@@ -1,0 +1,30 @@
+<core:FragmentDefinition fragmentName="agentHelpDialog"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout"
+	xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+	<Dialog title="{i18n>representative}" class="sapUiContentPadding" contentHeight="80%" >
+		<content>
+			<OverflowToolbar>
+				<SearchField search=".onAgentHelpSearch" width="100%" />
+			</OverflowToolbar>
+			<List
+				id="agentList"
+				items="{oModel>/agentType}"
+				busy="{oModel>/agentTypeBusy}"
+				selectionChange="onAgentTypeHelpSave"
+				mode="SingleSelectLeft"
+				includeItemInSelection="true">
+				<StandardListItem
+					title="{oModel>AgentCode}"
+					description="{oModel>AgentName}"
+					selected="{oModel>AgenteTypeSelected}" />
+			</List>
+		</content>
+		<buttons>
+			<Button id="AgentPrevious" icon="sap-icon://arrow-left" press="onAgentHelpPrevious" type="Emphasized" enabled="false"/>
+			<Button id="AgentNext" icon="sap-icon://arrow-right" press="onAgentHelpNext" type="Emphasized"/>
+			<Button id="AgentCancel" text="{i18n>cancel}" press="onAgentHelpClose" type="Ghost"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

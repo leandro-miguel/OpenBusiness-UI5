@@ -1,0 +1,30 @@
+<core:FragmentDefinition fragmentName="partnerHelpDialog"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout"
+	xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+	<Dialog title="{i18n>provider}" class="sapUiContentPadding" contentHeight="80%" >
+		<content>
+			<OverflowToolbar>
+				<SearchField search=".onPartnerHelpSearch" width="100%" />
+			</OverflowToolbar>
+			<List
+				id="partnerList"
+				items="{oModel>/partnersCode}"
+				busy="{oModel>/partnerBusy}"
+				selectionChange="onPartnerHelpSave"
+				mode="SingleSelectMaster"
+				includeItemInSelection="true">
+				<StandardListItem
+					selected="{oModel>LineVendorSelected}"
+					title="{oModel>CardCode}"
+					description="{oModel>CardName}" />
+			</List>
+		</content>
+		<buttons>
+			<Button id="PartnerPrevious" icon="sap-icon://arrow-left" press="onPartnerHelpPrevious" type="Emphasized" enabled="{oModel>/previousDialogButtonEnabled}"/>
+			<Button id="PartnerNext" icon="sap-icon://arrow-right" press="onPartnerHelpNext" type="Emphasized" enabled="{oModel>/nextDialogButtonEnabled}"/>
+			<Button id="PartnerCancel" text="{i18n>cancel}" press="onPartnerHelpClose" type="Ghost"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

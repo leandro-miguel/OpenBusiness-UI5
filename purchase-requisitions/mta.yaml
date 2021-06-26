@@ -1,0 +1,19 @@
+ID: purchaserequisitions
+version: 1.0.0
+_schema-version: 2.0.0
+
+parameters:
+  hcp-deployer-version: 1.2.0
+
+modules:
+  - name: purchaserequisitions
+    type: html5
+    path: .
+    parameters:
+      display-name: purchaserequisitions
+      version: ${timestamp}
+    build-parameters:
+      builder: npm
+      commands:
+        - npm install
+        - npm run build

@@ -1,0 +1,33 @@
+<core:FragmentDefinition fragmentName="itemNumberHelpDialog"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>itemCode}" class="sapUiContentPadding" contentHeight="80%">
+		<content>
+			<OverflowToolbar height="100%" width="100%">
+				<VBox >
+					<HBox alignItems="Center" justifyContent="Start">
+						<Label text="{i18n>showItens}" />
+						<Switch id="itemTypeSwitch" type="AcceptReject" state="{oModel>/itemNumberType}" change="onSwitchItemNumberChanged"/>
+					</HBox>
+					<SearchField search=".onItemNumberHelpSearch" width="100%" />
+				</VBox>
+			</OverflowToolbar>
+			<List
+				items="{oModel>/ItemsNumber}"
+				busy="{oModel>/ItemsNumberBusy}"
+				mode="SingleSelectMaster"
+				selectionChange="onItemNumberHelpSave"
+				includeItemInSelection="true">
+				<StandardListItem
+					title="{oModel>ItemCode}"
+					selected="{oModel>ItemCodeSelected}"
+					description="{oModel>ItemName}" />
+			</List>
+		</content>
+		<buttons>
+			<Button icon="sap-icon://arrow-left" press="onItemNumberHelpPrevious" type="Emphasized" enabled="{oModel>/previousDialogButtonEnabled}"/>
+			<Button icon="sap-icon://arrow-right" press="onItemNumberHelpNext" type="Emphasized" enabled="{oModel>/nextDialogButtonEnabled}"/>
+			<Button text="{i18n>cancel}" press="onItemNumberHelpClose" type="Ghost"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

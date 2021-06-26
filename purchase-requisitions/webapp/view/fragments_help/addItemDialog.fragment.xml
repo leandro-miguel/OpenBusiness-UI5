@@ -1,0 +1,44 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>addItemTitle}">
+		<FlexBox direction="Column" class="sapUiSmallMargin">
+			<Label text="{i18n>itemCode}" required="true"/>
+			<Input class="sapUiSmallMarginBottom" type="Text" showValueHelp="true" value="{oModelCreateOffer>/itemNumberValue}" busy="{oModelCreateOffer>/itemNumberBusy}" valueHelpRequest="onItemNumberHelpRequest" change="onItemNumberValueSetManual"/>
+			<Label text="{i18n>itemDescription}"/>
+			<Input class="sapUiSmallMarginBottom" type="Text" value="{oModelCreateOffer>/itemNumberValueDescription}" editable="false"/>
+			<Label text="{i18n>requiredDate}" required="true"/>
+			<DatePicker width="20rem" minDate="{oModelCreateOffer>/minDateItemNumber}" value="{oModelCreateOffer>/dateItemNumber}" valueFormat="yyyy-MM-dd" enabled="{oModelCreateOffer>/enabled}"/>
+			<Label text="{i18n>necessaryAmount}" required="true"/>
+			<Input class="sapUiMediumMarginBottom" value="{oModelCreateOffer>/requiredQuantityAddItem}" type="Number"/>
+			
+			<Table items="{oModelCreateOffer>/ItemsProviderAddItemDialog}" busy="{oModelCreateOffer>/ItemsProviderAddItemDialogBusy}" width="20rem">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title text="{i18n>tableDialogTitleProvider}" level="H2" />
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>code}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>name}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Label text="{oModelCreateOffer>CardCode}"></Label>
+							<Label text="{oModelCreateOffer>CardName}"></Label>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</FlexBox>
+		<beginButton>
+			<Button text="{i18n>add}" press="onAddNewItem" class="sapUiTinyMarginEnd"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>cancel}" press="onCancelAddNewItem"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

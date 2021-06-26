@@ -1,0 +1,29 @@
+<core:FragmentDefinition fragmentName="distRulesHelpDialog"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout"
+	xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+	<Dialog title="{i18n>costingCode}" class="sapUiContentPadding" contentHeight="80%">
+		<content>
+			<OverflowToolbar>
+				<SearchField search=".onDimensionHelpSearch" width="100%" />
+			</OverflowToolbar>
+			<List
+				items="{oModel>/DistRules}"
+				busy="{oModel>/DistRulesBusy}"
+				mode="SingleSelectMaster"
+				selectionChange="onDimensionHelpSave"
+				includeItemInSelection="true">
+				<StandardListItem
+					title="{oModel>FactorCode}"
+					description="{oModel>FactorDescription}"
+					selected="{oModel>FactorCodeSelected}"/>
+			</List>
+		</content>
+		<buttons>
+			<Button icon="sap-icon://arrow-left" press="onDimensionHelpPrevious" type="Emphasized" enabled="{oModel>/previousDialogButtonEnabled}"/>
+			<Button icon="sap-icon://arrow-right" press="onDimensionHelpNext" type="Emphasized" enabled="{oModel>/nextDialogButtonEnabled}"/>
+			<Button text="{i18n>cancel}" press="onDimensionHelpClose" type="Ghost"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

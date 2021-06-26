@@ -1,0 +1,282 @@
+<mvc:View
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.f"
+	xmlns:fb="sap.ui.comp.filterbar"
+	controllerName="requisitions.requisitions.controller.offer.ListOffer"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+>
+	<f:DynamicPage
+		id="dynamicPageId"
+		headerExpanded="true"
+		toggleHeaderOnTitleClick="false"
+		showFooter="true"
+	>
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title
+						text="{i18n>offerList}"
+						wrapping="true"
+					/>
+				</f:heading>
+				<f:actions>
+					<!-- <Button
+						text="{i18n>update}"
+						type="Emphasized"
+						press=".updateUserData"
+						visible="true"
+					/> -->
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<fb:FilterBar
+					id="filterBar"
+					search="onSearch"
+					useToolbar="false"
+					showGoOnFB="true"
+				>
+					<fb:filterGroupItems>
+						<fb:FilterGroupItem
+							name="Company"
+							groupName="g1"
+							mandatory="true"
+							visibleInFilterBar="true"
+							label="{i18n>codeRequester}"
+						>
+							<fb:control>
+								<Select
+									id="codeRequester"
+									selectedKey="{oModelListRequest>/idEmpresa}"
+									forceSelection="false"
+									change="onCompanySelect"
+									items="{ path: 'oModel>/Companies', sorter: { path: 'IdEmpresas' } }"
+									busy="{oModel>/companySelectBusy}"
+								>
+									<core:Item
+										key="{oModel>IdEmpresas}"
+										text="{oModel>Empresas}"
+									/>
+								</Select>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem
+							name="Country"
+							groupName="g1"
+							visibleInFilterBar="true"
+							label="{i18n>requester}"
+						>
+							<fb:control>
+								<Input
+									id="requester"
+									editable="false"
+									value="{oModel>/Country}"
+								/>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem
+							name="CompanyBranch"
+							groupName="g1"
+							visibleInFilterBar="true"
+							label="{i18n>department}"
+						>
+							<fb:control>
+								<Select
+									id="department"
+									forceSelection="false"
+									change="onBranchSelect"
+									selectedKey="{oModelListRequest>/branchFilter}"
+									enabled="{oModelListRequest>/Enabled}"
+									items="{ path: 'oModel>/Branches', sorter: { path: 'idFilial' } }"
+								>
+									<core:Item
+										key="{oModel>idFilial}"
+										text="{oModel>nomeFilial}"
+									/>
+								</Select>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem
+							groupName="G1"
+							name="C"
+							label="{i18n>branch}"
+							partOfCurrentVariant="true"
+							visibleInFilterBar="true"
+						>
+							<fb:control>
+								<MultiInput
+									id="branch"
+									class="sapUiSmallMarginBottom"
+									type="Text"
+									placeholder=""
+									showSuggestion="true"
+									showValueHelp="true"
+									valueHelpRequest="onReqNumHelpRequest"
+									valueHelpOnly="true"
+									enabled="{oModelListRequest>/Enabled}"
+									tokens="{ path: 'oModelListRequest>/reqNumTokens'}"
+								>
+									<tokens>
+										<Token
+											key="{oModelListRequest>key}"
+											text="{oModelListRequest>text}"
+											delete="deleteToken"
+										/>
+									</tokens>
+								</MultiInput>
+							</fb:control>
+						</fb:FilterGroupItem>
+					
+						<fb:FilterGroupItem
+							groupName="G1"
+							name="J"
+							label="{i18n>releaseDate}"
+							partOfCurrentVariant="true"
+							visibleInFilterBar="true"
+						>
+							<fb:control>
+								<DateRangeSelection
+									id="dataLancamento"
+									valueFormat="yyyy-MM-dd"
+									enabled="{oModelListRequest>/Enabled}"
+									value="{oModelListRequest>/requiredDate}"
+									dateValue="{oModelListRequest>/firstRequiredDate}"
+									secondDateValue="{oModelListRequest>/secondRequiredDate}"
+								/>
+							</fb:control>
+						</fb:FilterGroupItem>
+                        <fb:FilterGroupItem
+							groupName="G1"
+							name="K"
+							label="{i18n>requiredDates}"
+							partOfCurrentVariant="true"
+							visibleInFilterBar="true"
+						>
+							<fb:control>
+								<DateRangeSelection
+									id="datasNecessidade"
+									valueFormat="yyyy-MM-dd"
+									enabled="{oModelListRequest>/Enabled}"
+									value="{oModelListRequest>/requiredDate}"
+									dateValue="{oModelListRequest>/firstRequiredDate}"
+									secondDateValue="{oModelListRequest>/secondRequiredDate}"
+								/>
+							</fb:control>
+						</fb:FilterGroupItem>
+					</fb:filterGroupItems>
+				</fb:FilterBar>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<Table
+				id="requisitionsTable"
+				width="100%"
+				items="{oModelListRequest>/requisitionsItems}"
+				busy="{oModelListRequest>/requisitionsItemsBusy}"
+				mode="MultiSelect"
+			>
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title
+							text="{i18n>listRequisitions}"
+							busyIndicatorSize="Auto"
+							level="H2"
+						/>
+						<ToolbarSpacer/>
+						<Button
+							id="TablePrevious"
+							icon="sap-icon://arrow-left"
+							press="listPreviousButtonPress"
+							type="Emphasized"
+							enabled="{oModelListRequest>/previousTableButtonEnabled}"
+						/>
+						<Button
+							id="TableNext"
+							icon="sap-icon://arrow-right"
+							press="listNextButtonPress"
+							type="Emphasized"
+							enabled="{oModelListRequest>/nextTableButtonEnabled}"
+						/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="8rem">
+						<Label text="{i18n>codeRequesterOffer}"/>
+					</Column>
+					<Column
+						width="8rem"
+						hAlign="Center"
+					>
+						<Label text="{i18n>requisitionNumRedux}"/>
+					</Column>
+					<Column
+						width="8rem"
+						hAlign="Center"
+					>
+						<Label text="{i18n>approvalStatusRedux}"/>
+					</Column>
+					<Column
+						width="8rem"
+						hAlign="Center"
+					>
+						<Label text="{i18n>approvalSituation}"/>
+					</Column>
+					<Column
+						width="8rem"
+						hAlign="Center"
+						visible="{oModelListRequest>/approvalDivisionVisible}"
+					>
+						<Label text="{i18n>myApprovalRedux}"/>
+					</Column>
+					<Column
+						width="8rem"
+						hAlign="Center"
+					>
+						<Label text="{i18n>canceled}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem
+						selected="{oModelListRequest>SelectedItem}"
+						highlight="{path: 'oModelListRequest>U_Resu_work', formatter: '.formatter.approvalStatusHighlightFormatter'}"
+					>
+						<cells>
+							<Label text="{path: 'oModelListRequest>U_Filial', formatter: '.formatter.branchFormatter'}"/>
+							<Label text="{oModelListRequest>DocEntryDocumento}"/>
+							<ObjectStatus
+								text="{path: 'oModelListRequest>U_Resu_work', formatter: '.formatter.approvalStatusTextFormatter'}"
+								state="{path: 'oModelListRequest>U_Resu_work', formatter: '.formatter.approvalStatusStateFormatter'}"
+							/>
+							<ObjectStatus
+								text="{oModelListRequest>U_Num_Aprov} / {oModelListRequest>U_Total_Aprov}"
+								state="{path: 'oModelListRequest>U_Resu_work', formatter: '.formatter.approvalStatusStateFormatter'}"
+							/>
+							<ObjectStatus
+								text="{path: 'oModelListRequest>U_Resu_work_indi', formatter: '.formatter.approvalStatusTextFormatter'}"
+								state="{path: 'oModelListRequest>U_Resu_work_indi', formatter: '.formatter.approvalStatusStateFormatter'}"
+							/>
+							<ObjectStatus
+								text="{path: 'oModelListRequest>CANCELED', formatter: '.formatter.canceledFormatter'}"
+								state="{path: 'oModelListRequest>CANCELED', formatter: '.formatter.canceledColorFormatter'}"
+							/>
+							<Label text="{oModelListRequest>U_Nome_Sol}"/>
+							<Label text="{path: 'oModelListRequest>U_Data_Nec'}"/>
+							<Button
+								width="2rem"
+								icon="sap-icon://feeder-arrow"
+								type="Transparent"
+								press="navToRequestDetail"
+							/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

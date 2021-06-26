@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>editItemTitle}">
+		<FlexBox direction="Column" class="sapUiSmallMargin">
+			<Label text="{i18n>requiredDate}" required="true"/>
+			<DatePicker width="20rem" minDate="{oModelCreateOffer>/minDateItemNumber}" value="{oModelCreateOffer>/editDateItemNumber}" valueFormat="yyyy-MM-dd"/>
+			<Label text="{i18n>necessaryAmount}" required="true"/>
+			<Input class="sapUiMediumMarginBottom" value="{oModelCreateOffer>/editRequiredQuantityAddItem}" type="Number"/>
+		</FlexBox>
+		<beginButton>
+			<Button text="{i18n>save}" press="onEditItem" class="sapUiTinyMarginEnd"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>cancel}" press="onCancelEditItem"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

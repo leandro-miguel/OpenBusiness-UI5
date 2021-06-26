@@ -1,0 +1,373 @@
+<mvc:View controllerName="requisitions.requisitions.controller.request.Create" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap" xmlns:m="sap.m" xmlns:ui="sap.ui.table" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:layout="sap.ui.layout">
+	<ObjectPageLayout id="createOfferViewID" showFooter="true" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="{oModelCreateRequest>/ViewTitle}" wrapping="true"/>
+				</expandedHeading>
+				<snappedHeading>
+					<m:Title text="{oModelCreateRequest>/ViewTitle}" wrapping="true"/>
+				</snappedHeading>
+				<expandedContent>
+					<m:VBox>
+						<m:Text text="{ path: 'oModel>/currentDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy - HH:mm:ss' } }" visible="{oModelCreateRequest>/CreateVisible}"/>
+						<m:Text text="{i18n>requisitionNum}: {oModelCreateRequest>/DocEntryDocumento} {oModelCreateRequest>/numSAP}" visible="{oModelCreateRequest>/EditVisible}"/>
+					</m:VBox>
+				</expandedContent>
+				<snappedContent>
+					<m:VBox>
+						<m:Text text="{ path: 'oModel>/currentDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy - HH:mm:ss' } }" visible="{oModelCreateRequest>/CreateVisible}"/>
+						<m:Text text="{i18n>requisitionNum}: {oModelCreateRequest>/DocEntryDocumento} {oModelCreateRequest>/numSAP}" visible="{oModelCreateRequest>/EditVisible}"/>
+					</m:VBox>
+				</snappedContent>
+				<actions>
+					<m:Button text="{i18n>update}" type="Emphasized" press=".updateUserData" visible="{oModelCreateRequest>/updateUserDataVisible}"/>
+					<m:Button icon="sap-icon://pdf-attachment" type="Emphasized" press=".downloadPDF" visible="{oModelCreateRequest>/EditVisible}"/>
+					<m:Button text="{i18n>edit}" type="Emphasized" press=".editRequest" enabled="{oModelCreateRequest>/ApprovedEnabled}" visible="{oModelCreateRequest>/EditVisible}"/>
+					<m:Button text="{i18n>saveRequest}" type="Emphasized" press=".onCreateRequest" visible="{oModelCreateRequest>/CreateVisible}"/>
+					<m:Button text="{i18n>cancel}" type="Default" press=".cancelEdit" visible="{oModelCreateRequest>/CreateVisible}"/>
+					<m:Button text="{i18n>return}" type="Default" press=".navBack" visible="{oModelCreateRequest>/EditVisible}"/>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="{i18n>generalInformation}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false" title="{i18n>generalInformation}" mode="Expanded">
+						<blocks>
+							<layout:HorizontalLayout allowWrapping="true">
+								<layout:VerticalLayout class="sapUiMediumMarginEnd">
+									<m:Label text="{i18n>company}" labelFor="selectEmpresa" required="true"/>
+									<m:Select id="selectEmpresa" width="20rem" selectedKey="{oModelCreateRequest>/companySelectedKey}" forceSelection="false" valueState="{oModelCreateRequest>/companySelectedKeyState}"
+										change="onCompanySelect" items="{ path: 'oModel>/Companies', sorter: { path: 'IdEmpresas' } }" busy="{oModel>/companySelectBusy}" editable="{oModelCreateRequest>/CompanyEditable}">
+										<core:Item key="{oModel>IdEmpresas}" text="{oModel>Empresas}"/>
+									</m:Select>
+									<m:Label text="{i18n>branch}" labelFor="filial" required="true"/>
+									<m:Select id="filial" width="20rem" forceSelection="false" change="onBranchSelect" selectedKey="{oModelCreateRequest>/branch}" valueState="{oModelCreateRequest>/branchState}"
+										enabled="{oModelCreateRequest>/Enabled}" editable="{oModelCreateRequest>/Editable}" items="{ path: 'oModel>/Branches', sorter: { path: 'idFilial' } }">
+										<core:Item key="{oModel>idFilial}" text="{oModel>nomeFilial}"/>
+									</m:Select>
+									<layout:VerticalLayout>
+										<m:Label text="{i18n>requester}"/>
+										<m:Select id="solicitante" width="20rem" busy="{oModelCreateRequest>/RequestTypeBusy}" forceSelection="false" change="onRequesterSelect"
+											enabled="{oModelCreateRequest>/Enabled}" editable="{oModelCreateRequest>/Editable}" items="{ path: 'oModelCreateRequest>/RequestType', sorter: { path: 'Type' } }"
+											selectedKey="{oModelCreateRequest>/SelectedRequester}">
+											<core:Item key="{oModelCreateRequest>Type}" text="{oModelCreateRequest>Type}"/>
+										</m:Select>
+										<m:Label text="{i18n>requesterName}" visible="{oModelCreateRequest>/solicitanteLabelVisible}"/>
+										<m:Input id="solicitanteColaborador" width="20rem" type="Text" showSuggestion="true" showValueHelp="true"
+											valueHelpRequest="onEmployeeHelpRequest('colaborador')" change="onEmployeeValueSetManual" editable="{oModelCreateRequest>/Editable}"
+											visible="{oModelCreateRequest>/solicitanteColaboradorVisible}" value="{oModelCreateRequest>/solicitanteColaboradorValue}"
+											busy="{oModelCreateRequest>/solicitanteColaboradorBusy}"></m:Input>
+										<m:Input id="solicitanteUsuario" width="20rem" type="Text" showSuggestion="true" showValueHelp="true" valueHelpRequest="onUserHelpRequest"
+											change="onUserValueSetManual" visible="{oModelCreateRequest>/solicitanteUsuarioVisible}" editable="{oModelCreateRequest>/Editable}"
+											value="{oModelCreateRequest>/solicitanteUsuarioValue}" busy="{oModelCreateRequest>/solicitanteUsuarioBusy}"></m:Input>
+									</layout:VerticalLayout>
+									<m:Label text="{i18n>department}" labelFor="departamento"/>
+									<m:Select id="departamento" width="20rem" busy="{oModelCreateRequest>/DepartmentsBusy}" forceSelection="false" change="onDepartmentSelect"
+										enabled="{oModelCreateRequest>/Enabled}" editable="{oModelCreateRequest>/Editable}" items="{ path: 'oModelCreateRequest>/Departments' }"
+										selectedKey="{oModelCreateRequest>/department}">
+										<core:Item key="{oModelCreateRequest>Code}" text="{oModelCreateRequest>Name}"/>
+									</m:Select>
+								</layout:VerticalLayout>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout allowWrapping="true">
+								<layout:VerticalLayout class="sapUiMediumMarginEnd">
+									<m:Label text="{i18n>releaseDate}" labelFor="dataLancamento"/>
+									<m:DatePicker id="dataLancamento" width="20rem" valueFormat="yyyy-MM-dd" value="{oModelCreateRequest>/releaseDate}"
+										enabled="{oModelCreateRequest>/Enabled}" editable="{oModelCreateRequest>/Editable}"/>
+								</layout:VerticalLayout>
+								<layout:VerticalLayout class="sapUiMediumMarginEnd">
+									<m:Label text="{i18n>validUntil}" labelFor="validoAte" required="true"/>
+									<m:DatePicker id="validoAte" width="20rem" valueFormat="yyyy-MM-dd" value="{oModelCreateRequest>/validUntil}" valueState="{oModelCreateRequest>/validUntilState}"
+										enabled="{oModelCreateRequest>/Enabled}" editable="{oModelCreateRequest>/Editable}"/>
+								</layout:VerticalLayout>
+								<layout:VerticalLayout class="sapUiMediumMarginEnd">
+									<m:Label text="{i18n>documentDate}" labelFor="dataDocumento"/>
+									<m:DatePicker id="dataDocumento" width="20rem" valueFormat="yyyy-MM-dd" change="onDocDateSet" value="{oModelCreateRequest>/documentDate}"
+										enabled="{oModelCreateRequest>/Enabled}" editable="{oModelCreateRequest>/Editable}"/>
+								</layout:VerticalLayout>
+								<layout:VerticalLayout class="sapUiMediumMarginEnd">
+									<m:Label text="{i18n>requiredDate}" labelFor="dataNecessaria" required="true"/>
+									<m:DatePicker id="dataNecessaria" width="20rem" valueFormat="yyyy-MM-dd" value="{oModelCreateRequest>/requiredDate}" valueState="{oModelCreateRequest>/requiredDateState}"
+										enabled="{oModelCreateRequest>/Enabled}" editable="{oModelCreateRequest>/Editable}"/>
+								</layout:VerticalLayout>
+							</layout:HorizontalLayout>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>itemTitle}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:VBox>
+								<m:Table showNoData="false" width="auto">
+									<m:headerToolbar>
+										<m:OverflowToolbar>
+											<m:content>
+												<m:Title id="title2" text="{i18n>tableTitle}" class="Title"/>
+												<m:ToolbarSpacer/>
+												<m:Button id="copyButton" text="{i18n>copy}" type="Default" press=".onCopyItem" enabled="{oModelCreateRequest>/Editable}"/>
+												<m:Button id="deleteButton" text="{i18n>remove}" type="Default" press=".onRemoveItem" enabled="{oModelCreateRequest>/Editable}"/>
+												<m:Button id="addButton" icon="sap-icon://add" type="Default" press=".onAddItem" enabled="{oModelCreateRequest>/Editable}"/>
+											</m:content>
+										</m:OverflowToolbar>
+									</m:headerToolbar>
+								</m:Table>
+								<m:ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+									<ui:Table id="table" width="auto" rows="{oModelCreateRequest>/rows}" visibleRowCount="{oModelCreateRequest>/rowsCount}" busy="{oModelCreateRequest>/busyTable}">
+										<ui:columns>
+											<ui:Column minWidth="110">
+												<m:Label text="{i18n>itemId}"/>
+												<ui:template>
+													<m:Label text="{oModelCreateRequest>itemId}" wrapping="false"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="128">
+												<m:Label text="{i18n>itemCode}" required="true"/>
+												<ui:template>
+													<m:Input 
+														showValueHelp="true" 
+														type="Text" 
+														showSuggestion="true" 
+														editable="{oModelCreateRequest>/Editable}"
+														valueHelpRequest="onItemNumberHelpRequest" 
+														change="onItemNumberValueSetManual" 
+														value="{oModelCreateRequest>itemNumber}"
+														busy="{oModelCreateRequest>itemNumberBusy}"
+														valueState="{oModelCreateRequest>itemNumberState}"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="160">
+												<m:Label text="{i18n>itemDescription}"/>
+												<ui:template>
+													<m:Input value="{oModelCreateRequest>itemNumberDesc}" busy="{oModelCreateRequest>itemNumberBusy}" editable="false"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="128">
+												<m:Label text="{i18n>category}"/>
+												<ui:template>
+													<m:Input 
+														showValueHelp="true" 
+														type="Text" 
+														showSuggestion="true" 
+														editable="{oModelCreateRequest>/Editable}"
+														valueHelpRequest="onCategoryHelpRequest" 
+														change="onCategoryValueSetManual" 
+														value="{oModelCreateRequest>category}"
+														busy="{oModelCreateRequest>categoryBusy}"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="200">
+												<m:Label text="{i18n>provider}"/>
+												<ui:template>
+													<m:Input 
+														showValueHelp="true" 
+														type="Text" 
+														showSuggestion="true" 
+														editable="{oModelCreateRequest>/Editable}"
+														valueHelpRequest="onBusinessPartnerHelpRequest" 
+														change="onBusinessPartnerValueSetManual" 
+														value="{oModelCreateRequest>businessPartner}"
+														busy="{oModelCreateRequest>businessPartnerBusy}"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="200">
+												<m:Label text="{i18n>providerDesc}"/>
+												<ui:template>
+													<m:Input value="{oModelCreateRequest>businessPartnerDescription}" editable="false"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="160">
+												<m:Label text="{i18n>requiredDate}"/>
+												<ui:template>
+													<m:DatePicker valueFormat="yyyy-MM-dd" value="{oModelCreateRequest>requiredDateRow}" editable="{oModelCreateRequest>/Editable}"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="208">
+												<m:Label text="{i18n>necessaryAmount}" required="true"/>
+												<ui:template>
+													<m:Input liveChange="necessaryAmountChange" valueState="{oModelCreateRequest>necessaryAmountState}" value="{oModelCreateRequest>necessaryAmount}" editable="{oModelCreateRequest>/Editable}"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="128">
+												<m:Label text="{i18n>priceInfo}"/>
+												<ui:template>
+													<m:Input liveChange="priceInfoChange" value="{oModelCreateRequest>priceInfo}" editable="{oModelCreateRequest>/Editable}"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="128">
+												<m:Label text="{i18n>totalPrice}"/>
+												<ui:template>
+													<m:Input value="{oModelCreateRequest>totalPrice}" editable="false"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="176" id="dimension1" visible="{oModelCreateRequest>/dimension1Visible}">
+												<m:Label text="{oModelCreateRequest>/dimension1Label}"/>
+												<ui:template>
+													<m:Input 
+														showValueHelp="true" 
+														type="Text" 
+														showSuggestion="true" 
+														editable="{oModelCreateRequest>/Editable}"
+														valueHelpRequest="onDimensionHelpRequest($event, 1)" 
+														change="onDimensionValueSetManual($event, 1)" 
+														value="{oModelCreateRequest>dimension1}"
+														busy="{oModelCreateRequest>dimensionBusy1}"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="176" id="dimension2" visible="{oModelCreateRequest>/dimension2Visible}">
+												<m:Label text="{oModelCreateRequest>/dimension2Label}"/>
+												<ui:template>
+												<m:Input 
+														showValueHelp="true" 
+														type="Text" 
+														showSuggestion="true" 
+														editable="{oModelCreateRequest>/Editable}"
+														valueHelpRequest="onDimensionHelpRequest($event, 2)" 
+														change="onDimensionValueSetManual($event, 2)" 
+														value="{oModelCreateRequest>dimension2}"
+														busy="{oModelCreateRequest>dimensionBusy2}"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="176" id="dimension3" visible="{oModelCreateRequest>/dimension3Visible}">
+												<m:Label text="{oModelCreateRequest>/dimension3Label}"/>
+												<ui:template>
+													<m:Input 
+														showValueHelp="true" 
+														type="Text" 
+														showSuggestion="true" 
+														editable="{oModelCreateRequest>/Editable}"
+														valueHelpRequest="onDimensionHelpRequest($event, 3)" 
+														change="onDimensionValueSetManual($event, 3)" 
+														value="{oModelCreateRequest>dimension3}" 
+														busy="{oModelCreateRequest>dimensionBusy3}"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="176" id="dimension4" visible="{oModelCreateRequest>/dimension4Visible}">
+												<m:Label text="{oModelCreateRequest>/dimension4Label}"/>
+												<ui:template>
+													<m:Input 
+														showValueHelp="true" 
+														type="Text" 
+														showSuggestion="true" 
+														editable="{oModelCreateRequest>/Editable}"
+														valueHelpRequest="onDimensionHelpRequest($event, 4)" 
+														change="onDimensionValueSetManual($event, 4)" 
+														value="{oModelCreateRequest>dimension4}" 
+														busy="{oModelCreateRequest>dimensionBusy4}"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="176" id="dimension5" visible="{oModelCreateRequest>/dimension5Visible}">
+												<m:Label text="{oModelCreateRequest>/dimension5Label}"/>
+												<ui:template>
+													<m:Input 
+														showValueHelp="true" 
+														type="Text" 
+														showSuggestion="true" 
+														editable="{oModelCreateRequest>/Editable}"
+														valueHelpRequest="onDimensionHelpRequest($event, 5)" 
+														change="onDimensionValueSetManual($event, 5)" 
+														value="{oModelCreateRequest>dimension5}" 
+														busy="{oModelCreateRequest>dimensionBusy5}"/>
+												</ui:template>
+											</ui:Column>
+											<ui:Column minWidth="128">
+												<m:Label text="{i18n>projectCode}"/>
+												<ui:template>
+													<m:Input 
+														showValueHelp="true" 
+														type="Text" 
+														showSuggestion="true" 
+														editable="{oModelCreateRequest>/Editable}"
+														valueHelpRequest="onProjectHelpRequest" 
+														change="onProjectValueSetManual" 
+														value="{oModelCreateRequest>projectCode}"
+														busy="{oModelCreateRequest>projectCodeBusy}"/>
+												</ui:template>
+											</ui:Column>
+										</ui:columns>
+									</ui:Table>
+								</m:ScrollContainer>
+								<layout:VerticalLayout class="sapUiMediumMarginTop sapUiMediumMarginEnd">
+									<m:FlexBox direction="Column" alignItems="Start">
+										<m:Label text="{i18n>totalprice}"/>
+										<m:Label design="Bold" text="{oModelCreateRequest>/totalprice}" class="sapUiSmallMarginBottom"/>
+										<m:Label text="{i18n>holder}" labelFor="titular"/>
+											<m:Input id="titular" width="20rem" type="Text" showSuggestion="true" showValueHelp="true" valueHelpRequest="onEmployeeHelpRequest('titular')"
+											change="onTitularValueSetManual" value="{oModelCreateRequest>/documentsOwnerName}" busy="{oModelCreateRequest>/documentsOwnerNameBusy}" enabled="{oModelCreateRequest>/Enabled}" editable="{oModelCreateRequest>/Editable}"></m:Input>
+										<m:Label text="{i18n>comments}" labelFor="observacoes"/>
+										<m:TextArea id="observacoes" growing="true" value="{oModelCreateRequest>/comments}" showExceededText="true" maxLength="254" liveChange="handleLiveChange" valueLiveUpdate="true"
+											width="40rem" rows="4" enabled="{oModelCreateRequest>/Enabled}" editable="{oModelCreateRequest>/Editable}"/>
+									</m:FlexBox>
+								</layout:VerticalLayout>
+							</m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>approvals}" visible="{oModelCreateRequest>/approvalsVisible}">
+				<subSections>
+					<ObjectPageSubSection title="{i18n>approvals}" titleUppercase="false" mode="Expanded">
+						<blocks>
+							<m:FlexBox direction="Column" alignItems="Start">
+								<m:Label text="{i18n>approvalStatus}" labelFor="statusApp"/>
+								<m:Input width="20rem" value="{oModelCreateRequest>/status}" editable="false"/>
+								<m:List width="20rem" class="sapUiSmallMarginTop" items="{oModelCreateRequest>/Approvals}" includeItemInSelection="true" busy="{oModelCreateRequest>/ApprovalsBusy}">
+									<!--<StandardListItem title="{Approvals>Status}" description="{Approvals>Name}" icon="{Approvals>Icon}" info="{Approvals>Date}"/>-->
+									<m:CustomListItem>
+										<m:HBox alignItems="Center" justifyContent="Start">
+											<core:Icon size="1.7rem" src="{path: 'oModelCreateRequest>U_Resu_work_indi', formatter: '.formatter.iconApprovalStatusFormatter'}" color="#0854a0" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+											<m:VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+												<m:Label class="label1" text="{path: 'oModelCreateRequest>U_Resu_work_indi', formatter: '.formatter.statusApprovalStatusFormatter'}" design="Bold"/>
+												<m:Label class="label2" text="Justificativa: {oModelCreateRequest>U_Observacao}"/>
+												<m:Label class="sapUiSmallMarginTop label3" text="{path: 'oModelCreateRequest>U_NomeAprovador', formatter: '.formatter.nameApprovalStatusFormatter'} - {path: 'oModelCreateRequest>U_Data_resu_indi', formatter: '.formatter.dateApprovalStatusFormatter'}"/>
+											</m:VBox>
+										</m:HBox>
+									</m:CustomListItem>
+								</m:List>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>attachments}">
+				<subSections>
+					<ObjectPageSubSection title="Anexos" titleUppercase="false" mode="Expanded">
+						<blocks>
+							<m:UploadCollection id="UploadCollection" items="{ path: 'oModelCreateRequest>/Anexos', templateShareable: false }" busy="{oModelCreateRequest>/AnexosBusy}"
+								maximumFilenameLength="100" maximumFileSize="2" multiple="true" change="onChangeUploadCollection" fileDeleted="onFileDeleted"
+								uploadComplete="onFileUploadComplete" filenameLengthExceed="onFilenameLengthExceed" selectionChange="onDownloadItem"
+								fileSizeExceed="onFileSizeExceed" typeMissmatch="onFileTypeMissmatch" beforeUploadStarts="onBeforeUploadStarts" mode="SingleSelectMaster" uploadEnabled="{oModelCreateRequest>/Editable}">
+								<m:toolbar>
+									<m:OverflowToolbar id="myId">
+										<m:Title id="attachmentTitle"/>
+										<m:ToolbarSpacer/>
+										<!-- <m:Button id="downloadButton" text="Download" press="onDownloadItem" enabled="{oModelCreateRequest>/downloadEnabled}" type="Transparent"/> -->
+										<m:UploadCollectionToolbarPlaceholder/>
+									</m:OverflowToolbar>
+								</m:toolbar>
+								<m:items>
+									<m:UploadCollectionItem id="fileItemId" documentId="{oModelCreateRequest>fileName}" fileName="{oModelCreateRequest>fileName}"
+										mimeType="{oModelCreateRequest>Filemimetype}" enableEdit="false"  visibleEdit="false" enableDelete="{oModelCreateRequest>/Editable}"
+										visibleDelete="true" selected="{oModelCreateRequest>fileSelected}"></m:UploadCollectionItem>
+								</m:items>
+							</m:UploadCollection>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>udf}">
+				<subSections>
+					<ObjectPageSubSection title="{i18n>udf}" titleUppercase="false" mode="Expanded">
+						<blocks id="udfSection">
+							<m:VBox id="idPnl"></m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

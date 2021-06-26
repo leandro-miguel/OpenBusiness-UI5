@@ -1,0 +1,29 @@
+<core:FragmentDefinition fragmentName="ordNumHelpDialog"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout"
+	xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+	<Dialog title="{i18n>OrderNum}" class="sapUiContentPadding" contentHeight="80%">
+		<content>
+			<OverflowToolbar>
+				<SearchField search=".onOrderNumMultiHelpSearch" width="100%" />
+			</OverflowToolbar>
+			<List
+				id="OrderList"
+				items="{oModel>/OrderList}"
+				busy="{oModel>/OrderListBusy}"
+				mode="MultiSelect"
+				includeItemInSelection="true">
+				<StandardListItem
+					title="{oModel>U_Nume_docu}"
+					selected="{oModel>RequestSelected}"/>
+			</List>
+		</content>
+		<buttons>
+			<Button id="OrderNumMultiPrevious" icon="sap-icon://arrow-left" press="onOrderNumMultiHelpPrevious" type="Emphasized" enabled="{oModel>/previousDialogButtonEnabled}"/>
+			<Button id="OrderNumMultiNext" icon="sap-icon://arrow-right" press="onOrderNumMultiHelpNext" type="Emphasized" enabled="{oModel>/nextDialogButtonEnabled}"/>
+			<Button text="{i18n>save}" press="onOrderNumMultiHelpSave" type="Emphasized"/>
+			<Button text="{i18n>cancel}" press="onOrderNumMultiHelpClose" type="Ghost"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
