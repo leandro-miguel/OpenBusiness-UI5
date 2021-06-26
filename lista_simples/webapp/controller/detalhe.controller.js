@@ -28,29 +28,5 @@ sap.ui.define([
 
             oJsonModel.setProperty("/objDetail", objDetail); //Minha model terá um propriedade objDetail
         },
-
-        // navButtonPressed: function () {
-
-        //     var sPreviousHash = History.getInstance().getPreviousHash();
-
-        //     //The history contains a previous entry
-        //     if (sPreviousHash !== undefined) {
-        //         //var teste = window.history.go(-1);
-        //         window.location.assign(sPreviousHash);
-
-        //     } else {
-        //         var teste = window.history.go(-1);
-        //     }
-        // },
-
-        // onBeforeRendering: function () {
-        // },
-
-        // onAfterRendering: function () {
-        // },
-
-        // onExit: function () {
-
-        // },
     });
 });

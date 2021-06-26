@@ -1,74 +1,76 @@
-<mvc:View xmlns:f="sap.f"
-    xmlns:mvc="sap.ui.core.mvc"
+<mvc:View
+	xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.uxap"
 	xmlns:m="sap.m"
 	xmlns:l="sap.ui.layout"
 	controllerName="treinamentoseidor2021.controller.detalhe"
-    height="100%">
-	
-<!-- <f:ShellBar showNavButton="true"
-            navButtonPressed="navButtonPressed"
-			visible="true">
-</f:ShellBar> -->
-
-<ObjectPageLayout id="ObjectPageLayout"
+	height="100%"
+>
+	<ObjectPageLayout
+		id="ObjectPageLayout"
 		showTitleInHeaderContent="true"
 		showEditHeaderButton="true"
 		editHeaderButtonPress="handleEditBtnPress"
-		upperCaseAnchorBar="false"> 
-
+		upperCaseAnchorBar="false"
+	>
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
 					<m:FlexBox>
-						<m:Title text="{oModelDet>/objDetail/CustomerID}" wrapping="true"/> 
-						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
+						<m:Title
+							text="{oModelDet>/objDetail/CustomerID}"
+							wrapping="true"
+						/>
+						<m:ObjectMarker
+							type="Flagged"
+							class="sapUiTinyMarginBegin"
+						/>
 					</m:FlexBox>
 				</expandedHeading>
-
 				<snappedHeading>
-					<m:FlexBox  fitContainer="true" alignItems="Center">
-						<m:Title text="{oModelDet>/objDetail/CustomerID}" wrapping="true"/>
+					<m:FlexBox
+						fitContainer="true"
+						alignItems="Center"
+					>
+						<m:Title
+							text="{oModelDet>/objDetail/CustomerID}"
+							wrapping="true"
+						/>
 					</m:FlexBox>
 				</snappedHeading>
-
-				<!-- <expandedContent>
-					<m:Text text="Senior UI Developer"/>
-				</expandedContent>
-
-				<snappedContent>
-					<m:Text text="Senior UI Developer"/>
-				</snappedContent> -->
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
-
 		<headerContent>
 			<m:FlexBox wrap="Wrap">
-				<m:Label text="{oModelDet>/objDetail/OrderDate}" />
+				<m:Label text="{oModelDet>/objDetail/OrderDate}"/>
 			</m:FlexBox>
 		</headerContent>
-
 		<sections>
-			<ObjectPageSection titleUppercase="false" title="Section1">
+			<ObjectPageSection
+				titleUppercase="false"
+				title="Section1"
+			>
 				<subSections>
-					<ObjectPageSubSection >
+					<ObjectPageSubSection>
 						<blocks>
-							<m:Label text="{oModelDet>/objDetail/OrderDate}" />
+							<m:Label text="{oModelDet>/objDetail/OrderDate}"/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false"  title="Section2">
+			<ObjectPageSection
+				titleUppercase="false"
+				title="Section2"
+			>
 				<subSections>
 					<ObjectPageSubSection>
 						<blocks>
-							<m:Label text="{oModelDet>/objDetail/OrderDate}" />
+							<m:Label text="{oModelDet>/objDetail/OrderDate}"/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
 		</sections>
 	</ObjectPageLayout>
-
-
 </mvc:View>
