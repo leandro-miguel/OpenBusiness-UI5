@@ -4,7 +4,7 @@
 	xmlns="sap.uxap"
 	xmlns:m="sap.m"
 	xmlns:l="sap.ui.layout"
-	controllerName="treinamentoseidor2021.controller.detalhe"
+	controllerName="treinamentoseidor2021.controller.cliente.detalhe"
 	height="100%"
 >
 	<ObjectPageLayout

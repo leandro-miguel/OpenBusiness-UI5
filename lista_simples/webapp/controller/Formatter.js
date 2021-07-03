@@ -3,7 +3,7 @@ sap.ui.define([
 
 ], function (Controller) {
     "use strict";
-    return Controller.extend("treinamentoseidor2021.controller.formatter", {
+    return Controller.extend("treinamentoseidor2021.controller.Formatter", {
 
         formatacaoData: function (data) {
             return new Date(data).toLocaleDateString();
