@@ -65,10 +65,12 @@
           "bundleName": "treinamentoseidor2021.i18n.i18n"
         }
       },
-      "": {
-        "dataSource": "mainService",
-        "preload": true
-      }
+      "userModel": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"oModel": {
+				"type": "sap.ui.model.json.JSONModel"
+			}
     },
     "resources": {
       "css": [
@@ -89,10 +91,10 @@
       },
       "routes": [
         {
-          "name": "Routemain",
+          "name": "Cliente",
           "pattern": "",
           "target": [
-            "Targetmain"
+            "TargetCliente"
           ]
         },
         {
@@ -104,16 +106,16 @@
         }
       ],
       "targets": {
-        "Targetmain": {
+        "TargetCliente": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "main",
-          "viewName": "main"
+          "viewId": "cliente",
+          "viewName": "clientes.cliente"
         },
         "TargetDetalhe": {
           "viewType": "XML",
-          "viewName": "Detalhe"
+          "viewName": "clientes.detalhe"
         }
       }
     }
