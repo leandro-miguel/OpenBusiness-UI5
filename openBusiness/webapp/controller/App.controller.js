@@ -7,9 +7,9 @@ sap.ui.define([
     function (Controller) {
         "use strict";
 
-        return Controller.extend("treinamentoseidor2021.controller.App", {
+        return Controller.extend("openBusiness.controller.App", {
             onInit: function () {
 
-            }
+            },
         });
     });
