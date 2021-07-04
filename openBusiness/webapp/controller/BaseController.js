@@ -5,7 +5,7 @@ sap.ui.define([
 	"./Formatter"
 ], function (Controller, JSONModel, MessageBox, Formatter) {
 	"use strict";
-	return Controller.extend("treinamentoseidor2021.controller.BaseController", {
+	return Controller.extend("openBusiness.controller.BaseController", {
 		formatter: Formatter,
 		onInit: function () {
 			

@@ -1,5 +1,5 @@
 <mvc:View 
-    controllerName="treinamentoseidor2021.controller.App"   
+    controllerName="openBusiness.controller.App"   
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"

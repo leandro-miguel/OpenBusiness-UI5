@@ -4,7 +4,7 @@ sap.ui.define([
     "sap/ui/core/routing/History"
 ], function (Controller, JSONModel, History) {
     "use strict";
-    return Controller.extend("treinamentoseidor2021.cotroller.cliente.detalhe", {
+    return Controller.extend("openBusiness.cotroller.cliente.detalhe", {
 
         onInit: function () {
             var model = new JSONModel();

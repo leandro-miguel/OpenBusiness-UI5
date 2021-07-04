@@ -1,7 +1,7 @@
 {
   "_version": "1.32.0",
   "sap.app": {
-    "id": "treinamentoseidor2021",
+    "id": "openBusiness",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -41,7 +41,7 @@
   "sap.ui5": {
     "flexEnabled": false,
     "rootView": {
-      "viewName": "treinamentoseidor2021.view.App",
+      "viewName": "openBusiness.view.App",
       "type": "XML",
       "async": true,
       "id": "App"
@@ -62,7 +62,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "treinamentoseidor2021.i18n.i18n"
+          "bundleName": "openBusiness.i18n.i18n"
         }
       },
       "userModel": {
@@ -84,15 +84,22 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
-        "viewPath": "treinamentoseidor2021.view",
+        "viewPath": "openBusiness.view",
         "controlAggregation": "pages",
         "controlId": "app",
         "clearControlAggregation": false
       },
       "routes": [
         {
-          "name": "Cliente",
+          "name": "RouteDashboard",
           "pattern": "",
+          "target": [
+            "TargetDashboard"
+          ]
+        },
+        {
+          "name": "RouteCliente",
+          "pattern": "RouteCliente",
           "target": [
             "TargetCliente"
           ]
@@ -116,6 +123,10 @@
         "TargetDetalhe": {
           "viewType": "XML",
           "viewName": "clientes.detalhe"
+        },
+        "TargetDashboard": {
+          "viewType": "XML",
+          "viewName": "dashboard.ShellBar"
         }
       }
     }

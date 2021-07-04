@@ -14,15 +14,15 @@ sap.ui.define([
 ],function (Controller, JSONModel, Formatter, MessageBox, Dialog, DialogType, Button, ButtonType, Label, Text, TextArea, Core) {
     "use strict";
 
-    return Controller.extend("treinamentoseidor2021.controller.cliente.cliente",  {
+    return Controller.extend("openBusiness.controller.cliente.cliente",  {
         formatter: Formatter,
 			
 			onInit: function () {
 			
 				this.getView().setModel(new JSONModel(), "oModelClientList");
 				
-				// var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-				// oRouter.getRoute("RouteCreateOrder").attachPatternMatched(this._onObjectMatchedCreate, this);
+				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+				oRouter.getRoute("RouteCliente").attachPatternMatched(this.onBeforeRendering, this);
 				// oRouter.getRoute("RouteDetailOrder").attachPatternMatched(this._onObjectMatchedDetail, this);
 			},
 
@@ -31,7 +31,7 @@ sap.ui.define([
 				var oModel = this.getModel("oModelClientList");
 				var oBundle = this.getResourceBundle();	
 				//Pegando a Imagem
-				let svgLogo = sap.ui.require.toUrl("treinamentoseidor2021/images/sap-logo.svg");
+				let svgLogo = sap.ui.require.toUrl("openBusiness/images/sap-logo.svg");
 				oModel.setProperty("/svgLogo", svgLogo); 
 
 				oModel.setProperty("/Title", oBundle.getText("client"));
