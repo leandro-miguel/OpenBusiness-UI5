@@ -1,3 +1,9 @@
 node_modules/
-package-lock.json/
-.vscode/
+dist/
+.scp/
+.env
+Makefile*.mta
+mta_archives
+mta-*
+resources
+archive.zip

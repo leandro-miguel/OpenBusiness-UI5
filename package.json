@@ -1,14 +1,12 @@
 {
-	"name": "openbusiness",
+	"name": "openBusiness",
 	"version": "0.0.1",
 	"private": false,
 	"description": "Projeto para o TCC.",
 	"keywords": [
 		"ui5",
 		"openui5",
-		"sapui5",
-		"node",
-		"heroku"
+		"sapui5"
 	],
 	"engines": {
 		"node": "14.x"
