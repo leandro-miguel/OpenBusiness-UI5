@@ -1,82 +1,297 @@
 <mvc:View
-	controllerName="openBusiness.controller.dashboard.Dashboard"
+	height="100%"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
-	xmlns:c="sap.ui.core"
-	displayBlock="true"
-	height="100%"
-	busyIndicatorDelay="0"
+	xmlns:f="sap.f"
+	xmlns:tnt="sap.tnt"
+	controllerName="openBusiness.controller.dashboard.Dashboard"
 >
-<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Status Loaded - no press event"
-subheader="Subheader" press="navToClient">
-<TileContent unit="Unit" footer="Footer">
-    <ImageContent src="sap-icon://line-charts" />
-</TileContent>
-</GenericTile>
-<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Status Loaded - with press event"
-subheader="Subheader" press="">
-<TileContent unit="Unit" footer="Footer">
-    <ImageContent src="sap-icon://home-share" />
-</TileContent>
-</GenericTile>
-<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Status Loading - no press event"
-subheader="Subheader" state="Loading">
-<TileContent unit="Unit" footer="Footer">
-    <NumericContent scale="M" value="2.1" valueColor="Good" indicator="Up" withMargin="false" />
-</TileContent>
-</GenericTile>
-<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Status Loading - with press event"
-subheader="Subheader" state="Loading" press="press">
-<TileContent unit="Unit" footer="Footer">
-    <NumericContent scale="M" value="1.96" valueColor="Error" indicator="Down" withMargin="false" />
-</TileContent>
-</GenericTile>
-<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Status Failed - no press event"
-subheader="Subheader" frameType="TwoByOne" state="Failed">
-<TileContent unit="Unit" footer="Footer">
-    <FeedContent
-        contentText="@@notify Great outcome of the Presentation today. The new functionality and the design was well received. Berlin, Tokyo, Rome, Budapest, New York, Munich, London"
-        subheader="Subheader" value="9" />
-</TileContent>
-</GenericTile>
-<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Status Failed - with press event"
-subheader="Subheader" frameType="TwoByOne" state="Failed" press="press">
-<TileContent unit="Unit" footer="Footer">
-    <FeedContent
-        contentText="@@notify Great outcome of the Presentation today. The new functionality and the design was well received. Berlin, Tokyo, Rome, Budapest, New York, Munich, London"
-        subheader="Subheader" value="9" />
-</TileContent>
-</GenericTile>
-<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout">
-<GenericTile
-    backgroundImage="test-resources/sap/m/demokit/sample/GenericTileAsFeedTile/images/NewsImage1.png"
-    frameType="TwoByOne" state="Loading">
-    <TileContent unit="Unit" footer="Footer">
-        <NewsContent
-            contentText="Status Loading - no press event"
-            subheader="Subheader" />
-    </TileContent>
-</GenericTile>
-<GenericTile
-    backgroundImage="test-resources/sap/m/demokit/sample/GenericTileAsFeedTile/images/NewsImage2.png"
-    frameType="TwoByOne" state="Loaded" press="press">
-    <TileContent unit="Unit" footer="Footer">
-        <NewsContent
-            contentText="Status Loaded - with press event"
-            subheader="Subheader" />
-    </TileContent>
-</GenericTile>
-</SlideTile>
-<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Status Disabled - no press event"
-subheader="Subheader" state="Disabled">
-<TileContent footer="Footer" unit="Unit">
-    <NumericContent value="3" icon="sap-icon://travel-expense" withMargin="false" />
-</TileContent>
-</GenericTile>
-<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Status Disabled - with press event"
-subheader="Subheader" state="Disabled" press="press">
-<TileContent footer="Footer" unit="Unit">
-    <NumericContent value="3" icon="sap-icon://travel-expense" withMargin="false" />
-</TileContent>
-</GenericTile>
+	<tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<f:ShellBar
+				title="Open Business"
+				showMenuButton="true"
+				homeIcon="./resources/sap/ui/documentation/sdk/images/logo_ui5.png"
+				showCopilot="true"
+				showNotifications="true"
+				menuButtonPressed="onMenuButtonPress"
+				showProductSwitcher="true"
+				notificationsNumber=""
+			>
+				<f:menu>
+					<Menu>
+						<MenuItem
+							text="Flight booking"
+							icon="sap-icon://flight"
+						/>
+						<MenuItem
+							text="Car rental"
+							icon="sap-icon://car-rental"
+						/>
+					</Menu>
+				</f:menu>
+				<f:profile>
+					<Avatar initials=""/>
+				</f:profile>
+				<f:searchManager>
+					<f:SearchManager/>
+				</f:searchManager>
+			</f:ShellBar>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation
+				expanded="true"
+				selectedKey="{/selectedKey}"
+				itemSelect="onItemSelect"
+			>
+				<tnt:NavigationList items="{path: '/navigation'}">
+					<tnt:NavigationListItem
+						text="{title}"
+						icon="{icon}"
+						enabled="{enabled}"
+						expanded="{expanded}"
+						items="{items}"
+						key="{key}"
+					>
+						<tnt:NavigationListItem
+							text="{title}"
+							key="{key}"
+							enabled="{enabled}"
+						/>
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+				<tnt:fixedItem>
+					<tnt:NavigationList items="{path: '/fixedNavigation'}">
+						<tnt:NavigationListItem
+							text="{title}"
+							icon="{icon}"
+						/>
+					</tnt:NavigationList>
+				</tnt:fixedItem>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<NavContainer
+				id="pageContainer"
+				initialPage="page2"
+			>
+				<pages>
+					<ScrollContainer
+						id="root1"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+					>
+						<Text text="This is the root page"/>
+					</ScrollContainer>
+					<ScrollContainer
+						id="page1"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+					>
+						<Text text="This is the first page"/>
+					</ScrollContainer>
+					<ScrollContainer
+						id="page2"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+					>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Clientes"
+							subheader="Cadastro de Clientes"
+							press="navToClient"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://line-charts"/>
+							</TileContent>
+						</GenericTile>
+                        <GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Clientes"
+							subheader="Lista de Clientes"
+							press="navToClient"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://line-charts"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Status Loaded - with press event"
+							subheader="Subheader"
+							press=""
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://home-share"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Status Loading - no press event"
+							subheader="Subheader"
+							state="Loading"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<NumericContent
+									scale="M"
+									value="2.1"
+									valueColor="Good"
+									indicator="Up"
+									withMargin="false"
+								/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Status Loading - with press event"
+							subheader="Subheader"
+							state="Loading"
+							press="press"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<NumericContent
+									scale="M"
+									value="1.96"
+									valueColor="Error"
+									indicator="Down"
+									withMargin="false"
+								/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Status Failed - no press event"
+							subheader="Subheader"
+							frameType="TwoByOne"
+							state="Failed"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<FeedContent
+									contentText="@@notify Great outcome of the Presentation today. The new functionality and the design was well received. Berlin, Tokyo, Rome, Budapest, New York, Munich, London"
+									subheader="Subheader"
+									value="9"
+								/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Status Failed - with press event"
+							subheader="Subheader"
+							frameType="TwoByOne"
+							state="Failed"
+							press="press"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<FeedContent
+									contentText="@@notify Great outcome of the Presentation today. The new functionality and the design was well received. Berlin, Tokyo, Rome, Budapest, New York, Munich, London"
+									subheader="Subheader"
+									value="9"
+								/>
+							</TileContent>
+						</GenericTile>
+						<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout">
+							<GenericTile
+								backgroundImage="test-resources/sap/m/demokit/sample/GenericTileAsFeedTile/images/NewsImage1.png"
+								frameType="TwoByOne"
+								state="Loading"
+							>
+								<TileContent
+									unit="Unit"
+									footer="Footer"
+								>
+									<NewsContent
+										contentText="Status Loading - no press event"
+										subheader="Subheader"
+									/>
+								</TileContent>
+							</GenericTile>
+							<GenericTile
+								backgroundImage="test-resources/sap/m/demokit/sample/GenericTileAsFeedTile/images/NewsImage2.png"
+								frameType="TwoByOne"
+								state="Loaded"
+								press="press"
+							>
+								<TileContent
+									unit="Unit"
+									footer="Footer"
+								>
+									<NewsContent
+										contentText="Status Loaded - with press event"
+										subheader="Subheader"
+									/>
+								</TileContent>
+							</GenericTile>
+						</SlideTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Status Disabled - no press event"
+							subheader="Subheader"
+							state="Disabled"
+						>
+							<TileContent
+								footer="Footer"
+								unit="Unit"
+							>
+								<NumericContent
+									value="3"
+									icon="sap-icon://travel-expense"
+									withMargin="false"
+								/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Status Disabled - with press event"
+							subheader="Subheader"
+							state="Disabled"
+							press="press"
+						>
+							<TileContent
+								footer="Footer"
+								unit="Unit"
+							>
+								<NumericContent
+									value="3"
+									icon="sap-icon://travel-expense"
+									withMargin="false"
+								/>
+							</TileContent>
+						</GenericTile>
+					</ScrollContainer>
+					<ScrollContainer
+						id="root2"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+					>
+						<Text text="This is the root page of the second element"/>
+					</ScrollContainer>
+				</pages>
+			</NavContainer>
+		</tnt:mainContents>
+	</tnt:ToolPage>
 </mvc:View>
