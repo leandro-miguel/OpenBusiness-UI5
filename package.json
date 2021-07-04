@@ -8,10 +8,10 @@
 		"openui5",
 		"sapui5",
 		"node",
-    	"heroku"
+		"heroku"
 	],
 	"engines": {
-		"node":"14.x"
+		"node": "14.x"
 	},
 	"main": "webapp/index.html",
 	"scripts": {
@@ -34,5 +34,8 @@
 		"dependencies": [
 			"@sap/ux-ui5-tooling"
 		]
+	},
+	"dependencies": {
+		"keytar": "^7.7.0"
 	}
 }
