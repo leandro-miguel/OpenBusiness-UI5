@@ -92,7 +92,7 @@
       "routes": [
         {
           "name": "RouteDashboard",
-          "pattern": "",
+          "pattern": "RouteDashboard",
           "target": [
             "TargetDashboard"
           ]
