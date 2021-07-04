@@ -1,0 +1,69 @@
+{
+	"selectedKey": "dashboard",
+	"navigation": [
+        {
+			"title": "Dashboard",
+			"icon": "sap-icon://bbyd-dashboard",
+			"key": "dashboard"
+		},
+		{
+			"title": "Clientes",
+			"icon": "sap-icon://employee",
+            "key":"page1",
+			"expanded": false,
+			"items": [
+				{
+					"title": "page2"
+				},
+				{
+					"title": "Child Item"
+				},
+				{
+					"title": "Child Item"
+				},
+				{
+					"title": "Child Item"
+				},
+				{
+					"title": "Child Item"
+				},
+				{
+					"title": "Child Item"
+				},
+				{
+					"title": "Child Item"
+				}
+			]
+		},
+		{
+			"title": "Fornecedores",
+			"icon": "sap-icon://supplier",
+			"expanded": false,
+			"items": [
+				{
+					"title": "Child Item 1"
+				},
+				{
+					"title": "Child Item 2"
+				},
+				{
+					"title": "Child Item 3"
+				}
+			]
+		}
+	],
+	"fixedNavigation": [
+		{
+			"title": "Fixed Item 1",
+			"icon": "sap-icon://employee"
+		},
+		{
+			"title": "Fixed Item 2",
+			"icon": "sap-icon://building"
+		},
+		{
+			"title": "Fixed Item 3",
+			"icon": "sap-icon://card"
+		}
+	]
+}

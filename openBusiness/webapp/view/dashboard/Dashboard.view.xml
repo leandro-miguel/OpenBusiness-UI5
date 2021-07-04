@@ -12,7 +12,7 @@
 				title="Open Business"
 				showMenuButton="true"
 				homeIcon="./resources/sap/ui/documentation/sdk/images/logo_ui5.png"
-				showCopilot="true"
+				showCopilot="false"
 				showNotifications="true"
 				menuButtonPressed="onMenuButtonPress"
 				showProductSwitcher="true"
@@ -73,27 +73,11 @@
 		<tnt:mainContents>
 			<NavContainer
 				id="pageContainer"
-				initialPage="page2"
+				initialPage="dashboard"
 			>
 				<pages>
 					<ScrollContainer
-						id="root1"
-						horizontal="false"
-						vertical="true"
-						height="100%"
-					>
-						<Text text="This is the root page"/>
-					</ScrollContainer>
-					<ScrollContainer
-						id="page1"
-						horizontal="false"
-						vertical="true"
-						height="100%"
-					>
-						<Text text="This is the first page"/>
-					</ScrollContainer>
-					<ScrollContainer
-						id="page2"
+						id="dashboard"
 						horizontal="false"
 						vertical="true"
 						height="100%"
@@ -283,7 +267,48 @@
 						</GenericTile>
 					</ScrollContainer>
 					<ScrollContainer
-						id="root2"
+					id="page1"
+					horizontal="false"
+					vertical="true"
+					height="100%"
+				>
+				<GenericTile
+				class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+				header="Clientes"
+				subheader="Cadastro de Clientes"
+				press="navToClient"
+			>
+				<TileContent
+					unit="Unit"
+					footer="Footer"
+				>
+					<ImageContent src="sap-icon://line-charts"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile
+				class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+				header="Clientes"
+				subheader="Lista de Clientes"
+				press="navToClient"
+			>
+				<TileContent
+					unit="Unit"
+					footer="Footer"
+				>
+					<ImageContent src="sap-icon://line-charts"/>
+				</TileContent>
+			</GenericTile>
+				</ScrollContainer>
+				<ScrollContainer
+					id="page2"
+					horizontal="false"
+					vertical="true"
+					height="100%"
+				>
+					<Text text="This is the first page"/>
+				</ScrollContainer>
+					<ScrollContainer
+						id="page3"
 						horizontal="false"
 						vertical="true"
 						height="100%"
