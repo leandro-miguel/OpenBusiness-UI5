@@ -1,0 +1,31 @@
+{
+    "name": "openBeusiness",
+    "version": "1.0.0",
+    "description": "webapp",
+    "main": "",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/leandro-miguel/UI5"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/leandro-miguel/UI5/issues"
+    },
+    "homepage": "https://github.com/leandro-miguel/Ui5#readme",
+    "dependencies": {
+      "axios": "^0.21.1",
+      "body-parser": "^1.19.0",
+      "bootstrap-year-calendar": "^1.1.1",
+      "cors": "^2.8.5",
+      "express": "^4.17.1",
+      "express-router": "0.0.1"
+    
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.7"
+    }
+}
