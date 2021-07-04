@@ -6,8 +6,13 @@
 	"keywords": [
 		"ui5",
 		"openui5",
-		"sapui5"
+		"sapui5",
+		"node",
+    	"heroku"
 	],
+	"engines": {
+		"node":"14.x"
+	},
 	"main": "webapp/index.html",
 	"scripts": {
 		"start": "fiori run --open 'index.html'",
