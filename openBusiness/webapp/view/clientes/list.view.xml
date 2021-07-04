@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="openBusiness.controller.cliente.cliente"
+	controllerName="openBusiness.controller.cliente.list"
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true"
 	xmlns="sap.m"
