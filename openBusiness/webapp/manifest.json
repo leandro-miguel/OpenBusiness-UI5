@@ -126,7 +126,7 @@
         },
         "TargetDashboard": {
           "viewType": "XML",
-          "viewName": "dashboard.ShellBar"
+          "viewName": "dashboard.Dashboard"
         }
       }
     }

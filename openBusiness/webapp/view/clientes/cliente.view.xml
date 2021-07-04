@@ -20,8 +20,7 @@
 			<f:DynamicPageTitle>
 				<f:heading>
 					<HBox direction="RowReverse">
-						<Title text="{i18n>title}"/>
-						<Image src="{oModelClientList>/svgLogo}"/>
+						<Title text="{i18n>titleListClient}" />
 					</HBox>
 				</f:heading>
 				<f:snappedContent>
@@ -53,9 +52,10 @@
 				<fb:FilterBar
 					reset="onReset"
 					search="onSearch"
-					showRestoreButton="true"
-					showClearButton="true"
-					showFilterConfiguration="true"
+					showRestoreButton="false"
+					showClearButton="false"
+					showFilterConfiguration="false"
+					useToolbar="false"
 				>
 					<fb:filterGroupItems>
 						<fb:FilterGroupItem

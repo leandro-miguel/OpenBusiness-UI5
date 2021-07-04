@@ -31,7 +31,7 @@ sap.ui.define([
 				var oModel = this.getModel("oModelClientList");
 				var oBundle = this.getResourceBundle();	
 				//Pegando a Imagem
-				let svgLogo = sap.ui.require.toUrl("openBusiness/images/sap-logo.svg");
+				let svgLogo = sap.ui.require.toUrl("openBusiness/images/ui5.png");
 				oModel.setProperty("/svgLogo", svgLogo); 
 
 				oModel.setProperty("/Title", oBundle.getText("client"));

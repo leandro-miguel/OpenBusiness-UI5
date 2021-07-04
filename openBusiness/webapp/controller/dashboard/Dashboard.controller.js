@@ -1,16 +1,33 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-    "../BaseController"
+    'sap/ui/Device',
+	'sap/ui/core/mvc/Controller',
+	'sap/ui/model/json/JSONModel',
+	'sap/m/Popover',
+	'sap/m/Button',
+	'sap/m/library',
+    '../BaseController'
 ], function(
-	Controller
+	Device, Controller, JSONModel, Popover, Button, mobileLibrary
 ) {
 	"use strict";
 
 	return Controller.extend("openBusiness.controller.dashboard.Dashboard", {
 
-        onInit: function () {
+        onInit : function() {
+			this.oModel = new JSONModel();
+			//this.oModel.loadData(sap.ui.require.toUrl("sap/f/sample/ShellBarWithSplitApp/model/model.json"), null, false);
+			this.getView().setModel(this.oModel);
+		},
 
-        },
+		onItemSelect : function(oEvent) {
+			var item = oEvent.getParameter('item');
+			this.byId("pageContainer").to(this.getView().createId(item.getKey()));
+		},
+
+		onMenuButtonPress : function() {
+			var toolPage = this.byId("toolPage");
+			toolPage.setSideExpanded(!toolPage.getSideExpanded());
+		},
         navToClient: function (oEvent) {
             
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
