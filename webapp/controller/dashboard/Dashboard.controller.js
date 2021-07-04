@@ -29,7 +29,7 @@ sap.ui.define([
 		},
         navToClient: function (oEvent) {
             
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            var oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteCliente", {
                 
             });
