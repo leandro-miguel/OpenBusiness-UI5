@@ -118,7 +118,7 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "cliente",
-          "viewName": "clientes.cliente"
+          "viewName": "clientes.list"
         },
         "TargetDetalhe": {
           "viewType": "XML",

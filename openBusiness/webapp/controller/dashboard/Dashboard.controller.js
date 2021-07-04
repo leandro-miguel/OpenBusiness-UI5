@@ -7,15 +7,14 @@ sap.ui.define([
 	'sap/m/library',
     '../BaseController'
 ], function(
-	Device, Controller, JSONModel, Popover, Button, mobileLibrary
-) {
+	Device, Controller, JSONModel, Popover, Button, mobileLibrary) {
 	"use strict";
 
 	return Controller.extend("openBusiness.controller.dashboard.Dashboard", {
 
         onInit : function() {
 			this.oModel = new JSONModel();
-			//this.oModel.loadData(sap.ui.require.toUrl("sap/f/sample/ShellBarWithSplitApp/model/model.json"), null, false);
+			this.oModel.loadData(sap.ui.require.toUrl("openBusiness/model/model.json"), null, false);
 			this.getView().setModel(this.oModel);
 		},
 

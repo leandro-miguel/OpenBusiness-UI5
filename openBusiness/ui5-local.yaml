@@ -1,6 +1,6 @@
 specVersion: '2.0'
 metadata:
-  name: 'treinamento_seidor_2021'
+  name: 'openBusiness'
 type: application
 framework:
   name: SAPUI5
