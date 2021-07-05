@@ -34,24 +34,26 @@
 		<!-- Flexbox é uma boa escolha-->
 		<f:header>
 			<f:DynamicPageHeader pinnable="true">
-				<layout:HorizontalLayout allowWrapping="true">
-					<layout:VerticalLayout class="sapUiMediumMarginEnd">
-						<ObjectAttribute
-							title="Location"
-							text="Taubaté"
-						/>
-					</layout:VerticalLayout>
-					<layout:VerticalLayout>
-						<ObjectAttribute title="Availability"/>
-						<ObjectStatus
-							text="Treinamento"
-							state="Success"
-						/>
-					</layout:VerticalLayout>
-				</layout:HorizontalLayout>
-				
+				<OverflowToolbar>
+					<Label text="Nome"/>
+					<SearchField liveChange=".onSearch" width="89%"/>
+					<Button 
+					
+						activeIcon=""
+						enabled="true"
+						icon=""
+						iconDensityAware="true"
+						iconFirst="false"
+						text="Pesquisar"
+						textDirection="RTL"
+						type="Default"
+						width="auto"
+						press="onSearch">
+					</Button>
+				</OverflowToolbar>
 			</f:DynamicPageHeader>
 		</f:header>
+		
 		<f:content>
 			<Table
 				id="clientTable"
@@ -59,14 +61,12 @@
 				items="{oModelClientList>/clients}"
 				busy="{oModelClientList>/clientsBusy}"
 				mode="SingleSelectMaster"
-				selectionChange="navToDetail"
-			>
+				selectionChange="navToDetail">
 				<headerToolbar>
 					<Toolbar>
 						<Title
 							text="{oModelClientList>/Title}"
-							level="H2"
-						/>
+							level="H2"/>
 					</Toolbar>
 				</headerToolbar>
 				<columns>
