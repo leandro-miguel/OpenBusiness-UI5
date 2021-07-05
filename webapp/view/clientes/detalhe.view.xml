@@ -4,7 +4,7 @@
 	xmlns="sap.uxap"
 	xmlns:m="sap.m"
 	xmlns:l="sap.ui.layout"
-	controllerName="openBusiness.controller.cliente.detalhe"
+	controllerName="openBusiness.controller.cliente.Detalhe"
 	height="100%"
 >
 	<ObjectPageLayout

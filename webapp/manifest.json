@@ -110,6 +110,13 @@
           "target": [
             "TargetDetalhe"
           ]
+        },
+        {
+          "name": "Calendar",
+          "pattern": "Calendar",
+          "target": [
+            "TargetCalendar"
+          ]
         }
       ],
       "targets": {
@@ -127,6 +134,10 @@
         "TargetDashboard": {
           "viewType": "XML",
           "viewName": "dashboard.Dashboard"
+        },
+        "TargetCalendar": {
+          "viewType": "XML",
+          "viewName": "calendar.Calendar"
         }
       }
     }

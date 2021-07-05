@@ -1,6 +1,7 @@
 <mvc:View
 	height="100%"
 	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:unified="sap.ui.unified"
 	xmlns="sap.m"
 	xmlns:f="sap.f"
 	xmlns:tnt="sap.tnt"
@@ -9,27 +10,15 @@
 	<tnt:ToolPage id="toolPage">
 		<tnt:header>
 			<f:ShellBar
-				title="Open Business"
-				showMenuButton="true"
 				homeIcon="https://sapui5.hana.ondemand.com/resources/sap/ui/documentation/sdk/images/logo_ui5.png"
+				title="Open Business"
+				showMenuButton="false"
 				showCopilot="false"
 				showNotifications="true"
 				menuButtonPressed="onMenuButtonPress"
-				showProductSwitcher="true"
+				showProductSwitcher="false"
 				notificationsNumber=""
 			>
-				<f:menu>
-					<Menu>
-						<MenuItem
-							text="Flight booking"
-							icon="sap-icon://flight"
-						/>
-						<MenuItem
-							text="Car rental"
-							icon="sap-icon://car-rental"
-						/>
-					</Menu>
-				</f:menu>
 				<f:profile>
 					<Avatar initials=""/>
 				</f:profile>
@@ -82,32 +71,6 @@
 						vertical="true"
 						height="100%"
 					>
-						<GenericTile
-							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-							header="Clientes"
-							subheader="Cadastro de Clientes"
-							press="navToClient"
-						>
-							<TileContent
-								unit="Unit"
-								footer="Footer"
-							>
-								<ImageContent src="sap-icon://line-charts"/>
-							</TileContent>
-						</GenericTile>
-                        <GenericTile
-							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-							header="Clientes"
-							subheader="Lista de Clientes"
-							press="navToClient"
-						>
-							<TileContent
-								unit="Unit"
-								footer="Footer"
-							>
-								<ImageContent src="sap-icon://line-charts"/>
-							</TileContent>
-						</GenericTile>
 						<GenericTile
 							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
 							header="Status Loaded - with press event"
@@ -267,53 +230,153 @@
 						</GenericTile>
 					</ScrollContainer>
 					<ScrollContainer
-					id="page1"
-					horizontal="false"
-					vertical="true"
-					height="100%"
-				>
-				<GenericTile
-				class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-				header="Clientes"
-				subheader="Cadastro de Clientes"
-				press="navToClient"
-			>
-				<TileContent
-					unit="Unit"
-					footer="Footer"
-				>
-					<ImageContent src="sap-icon://line-charts"/>
-				</TileContent>
-			</GenericTile>
-			<GenericTile
-				class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
-				header="Clientes"
-				subheader="Lista de Clientes"
-				press="navToClient"
-			>
-				<TileContent
-					unit="Unit"
-					footer="Footer"
-				>
-					<ImageContent src="sap-icon://line-charts"/>
-				</TileContent>
-			</GenericTile>
-				</ScrollContainer>
-				<ScrollContainer
-					id="page2"
-					horizontal="false"
-					vertical="true"
-					height="100%"
-				>
-					<Text text="This is the first page"/>
-				</ScrollContainer>
+						id="page1"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+					>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Clientes"
+							subheader="Cadastro"
+							press="navToClient"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://add"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Clientes"
+							subheader="Lista"
+							press="navToClient"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://list"/>
+							</TileContent>
+						</GenericTile>
+					</ScrollContainer>
+					<ScrollContainer
+						id="page2"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+					>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Funcionários"
+							subheader="Cadastro"
+							press="navToClient"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://add"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Funcionários"
+							subheader="Lista"
+							press="navToClient"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://list"/>
+							</TileContent>
+						</GenericTile>
+					</ScrollContainer>
 					<ScrollContainer
 						id="page3"
 						horizontal="false"
 						vertical="true"
 						height="100%"
 					>
-						<Text text="This is the root page of the second element"/>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Fornecedores"
+							subheader="Cadastro"
+							press="navToClient"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://add"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Fornecedores"
+							subheader="Lista"
+							press="navToClient"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://list"/>
+							</TileContent>
+						</GenericTile>
+					</ScrollContainer>
+					<ScrollContainer
+						id="page4"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+					>
+						<SinglePlanningCalendar
+							id="SPC1"
+							title="Agenda"
+							appointmentSelect="handleAppointmentSelect"
+							headerDateSelect="handleHeaderDateSelect"
+							startDateChange="handleStartDateChange"
+							startDate="{path: '/startDate'}"
+							appointments="{path: '/appointments'}"
+						>
+							<actions>
+								<Button
+									id="addNewAppointment"
+									text="Create"
+									press="handleAppointmentCreate"
+									tooltip="Add new appointment"
+									ariaHasPopup="Dialog"
+								/>
+							</actions>
+							<views>
+								<SinglePlanningCalendarDayView
+									key="DayView"
+									title="Day"
+								/>
+								<SinglePlanningCalendarWorkWeekView
+									key="WorkWeekView"
+									title="Work Week"
+								/>
+								<SinglePlanningCalendarWeekView
+									key="WeekView"
+									title="Week"
+								/>
+							</views>
+							<appointments>
+								<unified:CalendarAppointment
+									title="{title}"
+									text="{text}"
+									type="{type}"
+									icon="{icon}"
+									startDate="{startDate}"
+									endDate="{endDate}"
+								/>
+							</appointments>
+						</SinglePlanningCalendar>
 					</ScrollContainer>
 				</pages>
 			</NavContainer>

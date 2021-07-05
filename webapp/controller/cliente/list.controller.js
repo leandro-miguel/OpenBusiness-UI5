@@ -14,7 +14,7 @@ sap.ui.define([
 ],function (Controller, JSONModel, Formatter, MessageBox, Dialog, DialogType, Button, ButtonType, Label, Text, TextArea, Core) {
     "use strict";
 
-    return Controller.extend("openBusiness.controller.cliente.list",  {
+    return Controller.extend("openBusiness.controller.cliente.List",  {
         formatter: Formatter,
 			
 			onInit: function () {
