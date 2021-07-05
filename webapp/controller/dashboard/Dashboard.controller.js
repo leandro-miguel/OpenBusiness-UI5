@@ -13,7 +13,7 @@ sap.ui.define([
 	return Controller.extend("openBusiness.controller.dashboard.Dashboard", {
 
         onInit : function() {
-			this.oModel = new JSONModel();
+			this.oModel = new JSONModel("oModel");
 			this.oModel.loadData(sap.ui.require.toUrl("openBusiness/model/model.json"), null, false);
 			this.getView().setModel(this.oModel);
 		},
@@ -33,6 +33,14 @@ sap.ui.define([
             oRouter.navTo("RouteCliente", {
                 
             });
-        }
+        },
+		navToCalendar: function (oEvent) {
+            
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("Calendar", {
+                
+            });
+        },
+
 	});
 });

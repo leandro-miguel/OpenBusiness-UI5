@@ -11,58 +11,56 @@
 			"icon": "sap-icon://employee",
             "key":"page1",
 			"expanded": false,
-			"items": [
-				{
-					"title": "page2"
-				},
-				{
-					"title": "Child Item"
-				},
-				{
-					"title": "Child Item"
-				},
-				{
-					"title": "Child Item"
-				},
-				{
-					"title": "Child Item"
-				},
-				{
-					"title": "Child Item"
-				},
-				{
-					"title": "Child Item"
-				}
-			]
+			"items": [{}]
+		},
+		{
+			"title": "Funcionários",
+			"icon": "sap-icon://company-view",
+            "key":"page2",
+			"expanded": false,
+			"items": [{}]
 		},
 		{
 			"title": "Fornecedores",
 			"icon": "sap-icon://supplier",
+            "key":"page3",
 			"expanded": false,
-			"items": [
-				{
-					"title": "Child Item 1"
-				},
-				{
-					"title": "Child Item 2"
-				},
-				{
-					"title": "Child Item 3"
-				}
-			]
+			"items": [{}]
+		},
+		{
+			"title": "Agenda",
+			"icon": "sap-icon://calendar",
+            "key":"page4",
+			"expanded": false,
+			"items": [{}]
+		},
+		{
+			"title": "Materiais",
+			"icon": "sap-icon://measurement-document",
+            "key":"page5",
+			"expanded": false,
+			"items": [{}]
+		},
+		{
+			"title": "Serviços",
+			"icon": "sap-icon://technical-object",
+            "key":"page6",
+			"expanded": false,
+			"items": [{}]
 		}
+
 	],
 	"fixedNavigation": [
 		{
-			"title": "Fixed Item 1",
+			"title": "Perfil",
 			"icon": "sap-icon://employee"
 		},
 		{
-			"title": "Fixed Item 2",
+			"title": "Painel",
 			"icon": "sap-icon://building"
 		},
 		{
-			"title": "Fixed Item 3",
+			"title": "Opções",
 			"icon": "sap-icon://card"
 		}
 	]
