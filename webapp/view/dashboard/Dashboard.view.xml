@@ -239,7 +239,7 @@
 							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
 							header="Clientes"
 							subheader="Cadastro"
-							press="navToClient"
+							press="navToCreateClient"
 						>
 							<TileContent
 								unit="Unit"
@@ -252,7 +252,7 @@
 							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
 							header="Clientes"
 							subheader="Lista"
-							press="navToClient"
+							press="navToListClient"
 						>
 							<TileContent
 								unit="Unit"
@@ -272,7 +272,7 @@
 							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
 							header="Funcionários"
 							subheader="Cadastro"
-							press="navToClient"
+							press="navToVendorCreate"
 						>
 							<TileContent
 								unit="Unit"
@@ -285,7 +285,7 @@
 							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
 							header="Funcionários"
 							subheader="Lista"
-							press="navToClient"
+							press="navToVendorList"
 						>
 							<TileContent
 								unit="Unit"

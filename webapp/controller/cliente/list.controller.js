@@ -3,15 +3,7 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "../Formatter",
     "sap/m/MessageBox",
-    "sap/m/Dialog",
-    "sap/m/DialogType",
-    "sap/m/Button",
-    "sap/m/ButtonType",
-    "sap/m/Label",
-    "sap/m/Text",
-    "sap/m/TextArea",
-    "sap/ui/core/Core"
-],function (Controller, JSONModel, Formatter, MessageBox, Dialog, DialogType, Button, ButtonType, Label, Text, TextArea, Core) {
+],function (Controller, JSONModel, Formatter, MessageBox) {
     "use strict";
 
     return Controller.extend("openBusiness.controller.cliente.List",  {
@@ -22,8 +14,7 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(), "oModelClientList");
 				
 				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-				oRouter.getRoute("RouteCliente").attachPatternMatched(this.onBeforeRendering, this);
-				// oRouter.getRoute("RouteDetailOrder").attachPatternMatched(this._onObjectMatchedDetail, this);
+				oRouter.getRoute("RouteListClient").attachPatternMatched(this.onBeforeRendering, this);
 			},
 
 			onBeforeRendering:function(){
@@ -38,7 +29,7 @@ sap.ui.define([
 			},
 
 			onSearch: async function () {
-				debugger
+				
 				
 				var oModel = this.getModel("oModelClientList");
             	var oModelGeral = this.getModel("oModel");
@@ -93,6 +84,10 @@ sap.ui.define([
 				oRouter.navTo("RouteDetalhe", {
 					path: sPath.substring(1)
 				});
+			},
+
+			navBack: function () {
+				window.history.go(-1);
 			},
 		});
 	});

@@ -2,12 +2,9 @@ sap.ui.define([
     'sap/ui/Device',
 	'sap/ui/core/mvc/Controller',
 	'sap/ui/model/json/JSONModel',
-	'sap/m/Popover',
-	'sap/m/Button',
-	'sap/m/library',
     '../BaseController'
 ], function(
-	Device, Controller, JSONModel, Popover, Button, mobileLibrary) {
+	Device, Controller, JSONModel) {
 	"use strict";
 
 	return Controller.extend("openBusiness.controller.dashboard.Dashboard", {
@@ -27,10 +24,17 @@ sap.ui.define([
 			var toolPage = this.byId("toolPage");
 			toolPage.setSideExpanded(!toolPage.getSideExpanded());
 		},
-        navToClient: function (oEvent) {
+		navToCreateClient: function (oEvent) {
             
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("RouteCliente", {
+            oRouter.navTo("RouteCreateCliente", {
+                
+            });
+        },
+        navToListClient: function (oEvent) {
+            
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteListClient", {
                 
             });
         },

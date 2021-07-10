@@ -19,7 +19,7 @@
 				<expandedHeading>
 					<m:FlexBox>
 						<m:Title
-							text="{oModelDet>/objDetail/CustomerID}"
+							text="{oModelClienteDetalhe>/objDetail/CustomerID}"
 							wrapping="true"
 						/>
 						<m:ObjectMarker
@@ -34,7 +34,7 @@
 						alignItems="Center"
 					>
 						<m:Title
-							text="{oModelDet>/objDetail/CustomerID}"
+							text="{oModelClienteDetalhe>/objDetail/CustomerID}"
 							wrapping="true"
 						/>
 					</m:FlexBox>
@@ -43,7 +43,7 @@
 		</headerTitle>
 		<headerContent>
 			<m:FlexBox wrap="Wrap">
-				<m:Label text="{oModelDet>/objDetail/OrderDate}"/>
+				<m:Label text="{oModelClienteDetalhe>/objDetail/OrderDate}"/>
 			</m:FlexBox>
 		</headerContent>
 		<sections>
@@ -54,7 +54,7 @@
 				<subSections>
 					<ObjectPageSubSection>
 						<blocks>
-							<m:Label text="{oModelDet>/objDetail/OrderDate}"/>
+							<m:Label text="{oModelClienteDetalhe>/objDetail/OrderDate}"/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
@@ -66,7 +66,7 @@
 				<subSections>
 					<ObjectPageSubSection>
 						<blocks>
-							<m:Label text="{oModelDet>/objDetail/OrderDate}"/>
+							<m:Label text="{oModelClienteDetalhe>/objDetail/OrderDate}"/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>

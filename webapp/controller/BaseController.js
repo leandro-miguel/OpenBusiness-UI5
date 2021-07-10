@@ -49,7 +49,7 @@ sap.ui.define([
 
 		openFragment: function (folder, dialogName) {
 			if (!this[dialogName]) {
-				this[dialogName] = sap.ui.xmlfragment("requisitions.requisitions.view." + folder + "." + dialogName, this);
+				this[dialogName] = sap.ui.xmlfragment("openBusiness.view." + folder + "." + dialogName, this);
 				this.getView().addDependent(this[dialogName]);
 				jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this[dialogName]);
 			}
