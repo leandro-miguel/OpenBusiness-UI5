@@ -9,11 +9,11 @@ sap.ui.define([
         onInit: function () {
             var model = new JSONModel();
 
-            this.getView().setModel(model, "oModelDet");
+            this.getView().setModel(model, "oModelDetalheCliente");
 
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 
-            oRouter.getRoute("RouteDetalhe").attachPatternMatched(this._onObjectMatched, this);
+            oRouter.getRoute("RouteDetalheCliente").attachPatternMatched(this._onObjectMatched, this);
         },
 
         _onObjectMatched: function (oEvent) {
@@ -24,7 +24,7 @@ sap.ui.define([
 
             var objDetail = oDataModel.getProperty("/" + sPath); //Me da as propriedades do /sPath e armazena no objOrders
 
-            var oJsonModel = this.getView().getModel("oModelDet");
+            var oJsonModel = this.getView().getModel("oModelDetalheCliente");
 
             oJsonModel.setProperty("/objDetail", objDetail); //Minha model terá um propriedade objDetail
         },

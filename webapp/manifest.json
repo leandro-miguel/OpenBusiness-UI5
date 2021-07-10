@@ -51,7 +51,8 @@
       "libs": {
         "sap.ui.core": {},
         "sap.m": {},
-        "sap.ui.layout": {}
+        "sap.ui.layout": {},
+        "sap.ui.table": {}
       }
     },
     "contentDensities": {
@@ -98,17 +99,17 @@
           ]
         },
         {
-          "name": "RouteCliente",
-          "pattern": "RouteCliente",
+          "name": "RouteCreateCliente",
+          "pattern": "RouteCreateCliente",
           "target": [
-            "TargetCliente"
+            "TargetCreateCliente"
           ]
         },
         {
-          "name": "RouteDetalhe",
-          "pattern": "RouteDetalhe/{path}",
+          "name": "RouteListClient",
+          "pattern": "RouteListClient",
           "target": [
-            "TargetDetalhe"
+            "TargetListClient"
           ]
         },
         {
@@ -120,20 +121,22 @@
         }
       ],
       "targets": {
-        "TargetCliente": {
+        "TargetDashboard": {
+          "viewType": "XML",
+          "viewName": "dashboard.Dashboard",
+          "transition": "slide"
+        },
+        "TargetCreateCliente": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "cliente",
-          "viewName": "clientes.list"
+          "viewName": "clientes.Create"
         },
-        "TargetDetalhe": {
+        "TargetListClient": {
+          "transition": "slide",
           "viewType": "XML",
-          "viewName": "clientes.detalhe"
-        },
-        "TargetDashboard": {
-          "viewType": "XML",
-          "viewName": "dashboard.Dashboard"
+          "viewName": "clientes.List"
         },
         "TargetCalendar": {
           "viewType": "XML",
