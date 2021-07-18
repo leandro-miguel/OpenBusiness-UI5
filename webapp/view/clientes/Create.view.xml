@@ -74,6 +74,7 @@
 										id="dateNasc"
 										width="20rem"
 										displayFormat="short"
+										valueFormat="yyyy-MM-dd"
 										value="{oModelCreateClient>/dateNasc}"
 									/>
 									<m:Label text="{i18n>cpf}"/>
@@ -83,6 +84,7 @@
 										editable="{oModelBusinessPartner>/Editable}"
 										class="sapUiSmallMarginBottom"
 										value="{oModelCreateClient>/cpf}"
+										valueState="{oModelCreateClient>/cpfState}"
 										enabled="{oModelCreateClient>/Enabled}"
 									/>
 								</layout:VerticalLayout>
@@ -99,6 +101,7 @@
 										width="20rem"
 										type="Tel"
 										value="{oModelCreateClient>/lastName}"
+										valueState="{oModelCreateClient>/lastNameState}"
 										busy="{oModelCreateClient>/contactPersonBusy}"
 									/>
 									<m:Label
@@ -111,8 +114,8 @@
 										width="20rem"
 										editable="{oModelBusinessPartner>/Editable}"
 										class="sapUiSmallMarginBottom"
-										valueState="{oModelBusinessPartner>/PhoneState}"
-										value="{oModelCreateClient>/Phone}"
+										value="{oModelCreateClient>/phone1}"
+										valueState="{oModelCreateClient>/phoneState}"
 										enabled="{oModelCreateClient>/Enabled}"
 									/>
 									<m:Label text="{i18n>phone1}"/>
@@ -121,7 +124,7 @@
 										width="20rem"
 										editable="{oModelBusinessPartner>/Editable}"
 										class="sapUiSmallMarginBottom"
-										value="{oModelCreateClient>/phone1}"
+										value="{oModelCreateClient>/phone2}"
 										enabled="{oModelCreateClient>/Enabled}"
 									/>
 								</layout:VerticalLayout>
@@ -148,14 +151,14 @@
 									<m:InputListItem label="{i18n>Street}">
 										<m:Input
 											placeholder=""
-											value="{oModelCreateClient>/Street}"
+											value="{oModelCreateClient>/street}"
 											width="20rem"
 										/>
 									</m:InputListItem>
 									<m:InputListItem label="{i18n>City}">
 										<m:Input
 											placeholder=""
-											value="{oModelCreateClient>/City}"
+											value="{oModelCreateClient>/city}"
 											width="20rem"
 										/>
 									</m:InputListItem>
@@ -177,11 +180,20 @@
 										type="Number"
 										width="5rem"
 									/>
-								</m:InputListItem>
+									</m:InputListItem>
+									
 									<m:InputListItem label="{i18n>State}">
 										<m:Select
+										selectedKey="{oModelCreateClient>/idState}"
+										change="selectState"
 										width="5rem">
 											<core:Item
+											
+												key=""
+												text=""
+											/>
+											<core:Item
+											
 												key="SP"
 												text="SP"
 											/>

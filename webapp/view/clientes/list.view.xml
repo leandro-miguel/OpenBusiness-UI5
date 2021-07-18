@@ -3,7 +3,6 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true"
 	xmlns="sap.m"
-	
 	xmlns:f="sap.f"
 	xmlns:layout="sap.ui.layout"
 	xmlns:core="sap.ui.core"
@@ -33,20 +32,16 @@
 		</f:title>
 		<!-- Flexbox é uma boa escolha-->
 		<f:header>
-			<f:DynamicPageHeader pinnable="true">
+			<f:DynamicPageHeader>
 				<OverflowToolbar>
 					<Label text="Nome"/>
 					<SearchField liveChange=".onSearch" width="89%"/>
-					<Button 
-					
+					<Button
 						activeIcon=""
-						enabled="true"
 						icon=""
-						iconDensityAware="true"
 						iconFirst="false"
 						text="Pesquisar"
 						textDirection="RTL"
-						type="Default"
 						width="auto"
 						press="onSearch">
 					</Button>
@@ -57,7 +52,6 @@
 		<f:content>
 			<Table
 				id="clientTable"
-				width="100%"
 				items="{oModelClientList>/clients}"
 				busy="{oModelClientList>/clientsBusy}"
 				mode="SingleSelectMaster"
@@ -70,31 +64,38 @@
 					</Toolbar>
 				</headerToolbar>
 				<columns>
-					<Column minScreenWidth="small">
-						<Text text="{i18n>CustomerID}"/>
+					<Column>
+						<Text text="{i18n>nameClients}"/>
 					</Column>
-					<Column minScreenWidth="small">
-						<Text text="{i18n>nameClints}"/>
-					</Column>
-					<Column minScreenWidth="small">
+					<Column >
 						<Text text="{i18n>telClients}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>cpf}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>city}"/>
+					</Column>
+					<Column hAlign="End">
+						<Text text=""/>
 					</Column>
 				</columns>
 				<items>
 					<!-- A cor da tabela tem como base o status de aprovaçao -->
-					<ColumnListItem
-						selected="{oModelListOrder>SelectedItem}"
-						highlight="{path: 'oModelListOrder>U_Resu_work', formatter: '.formatter.approvalStatusHighlightFormatter'}"
-					>
+					<ColumnListItem>
 						<cells>
-							<!-- Filial -->
-							<Label text="{oModelClientList>id_clientes}"/>
-							<!-- número do pedido -->
-							<Label text="{oModelClientList>nome_clientes}"/>
-							<!-- Status Aprovaçao -->
-							<Label text="{oModelClientList>telefone}"/>
+						
+							<!-- nome -->
+							<Label text="{oModelClientList>firstname} {oModelClientList>lastname}"/>
+							<!-- telefone -->
+							<Label text="{oModelClientList>phone1}"/>
+							<!-- cpf -->
+							<Label text="{oModelClientList>cpf}"/>
+							<!-- city -->
+							<Label text="{oModelClientList>city}"/>		
+							<!-- navbar -->
 							<Button
-								width="2rem"
+								width="10px"
 								icon="sap-icon://feeder-arrow"
 								type="Transparent"
 								press="navToDetail"

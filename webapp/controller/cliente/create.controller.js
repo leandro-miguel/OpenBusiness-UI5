@@ -64,7 +64,7 @@ sap.ui.define([
 		},
 
         onCreate:function(){
-            
+            debugger
             var oModel = this.getModel("oModelCreateClient");
             var oBundle = this.getResourceBundle();
             this.getView().setBusy(true);
@@ -107,11 +107,31 @@ sap.ui.define([
 			
             var obj = {};
         
-            obj.nome_clientes = oModel.getProperty("/firstName")
-            //objOrder.nome_clientes = oModel.getProperty("/firstName");
-            obj.telefone = oModel.getProperty("/Phone");
-           
+            obj.firstName = oModel.getProperty("/firstName")
+            obj.lastName = oModel.getProperty("/lastName");
+			obj.dateNasc = oModel.getProperty("/dateNasc"); //como inverter a data
+            obj.phone1 = oModel.getProperty("/phone1");
+            obj.phone2 = oModel.getProperty("/phone2");
+			obj.cpf = oModel.getProperty("/cpf");
+			obj.street = oModel.getProperty("/street");
+			obj.city = oModel.getProperty("/city");
+			obj.cep = oModel.getProperty("/cep");
+			obj.number = oModel.getProperty("/number");
+            obj.state = oModel.getProperty("/idState");
+			
             return obj;
+        },
+
+        selectState:function(oEvent){
+            debugger
+            var idState = oEvent.getParameter("selectedItem").getProperty("key"),
+            oModel = this.getModel("oModelCreateClient"),
+            oModelGeral = this.getModel("oModel");
+
+            oModelGeral.setProperty("/idState", idState);
+            oModel.setProperty("/idState", idState);
+            oModel.setProperty("/companySelected", true);
+            oModel.setProperty("/busyTable", false);
         },
 
         validateFields: function (oModel) {
@@ -125,11 +145,26 @@ sap.ui.define([
                 oModel.setProperty("/firstNameState", "None");
             }
 
-            if (!oModel.getProperty("/Phone") || oModel.getProperty("/Phone").length === 0) {
-                oModel.setProperty("/PhoneState", "Error");
+            
+            if (!oModel.getProperty("/lastName") || oModel.getProperty("/lastName").length === 0) {
+                oModel.setProperty("/lastNameState", "Error");
                 auxCount++;
             } else {
-                oModel.setProperty("/PhoneState", "None");
+                oModel.setProperty("/lastNameState", "None");
+            }
+
+            if (!oModel.getProperty("/phone1") || oModel.getProperty("/phone1").length === 0) {
+                oModel.setProperty("/phoneState", "Error");
+                auxCount++;
+            } else {
+                oModel.setProperty("/phoneState", "None");
+            }
+
+            if (!oModel.getProperty("/cpf") || oModel.getProperty("/cpf").length === 0) {
+                oModel.setProperty("/cpfState", "Error");
+                auxCount++;
+            } else {
+                oModel.setProperty("/cpfState", "None");
             }
 
             oModel.updateBindings();
