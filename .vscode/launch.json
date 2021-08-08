@@ -2,6 +2,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch Chrome",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Attach to Chrome",
+            "port": 3000,
+            "request": "attach",
+            "type": "pwa-chrome",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
             "name": "Start openbusiness",
             "type": "node",
             "request": "launch",
@@ -16,7 +30,7 @@
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "port": 9229,
+            "port": 3000,
             "env": {
                 "DEBUG": "--inspect"
             }
@@ -40,7 +54,7 @@
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "port": 9229,
+            "port": 3000,
             "env": {
                 "DEBUG": "--inspect"
             }
@@ -60,7 +74,7 @@
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "port": 9229,
+            "port": 3000,
             "env": {}
         },
         {
@@ -82,7 +96,7 @@
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "port": 9229
+            "port": 3000
         },
         {
             "name": "Start openbusiness Local",
@@ -99,7 +113,7 @@
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "port": 9229,
+            "port": 3000,
             "env": {}
         }
     ],

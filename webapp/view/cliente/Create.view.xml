@@ -256,7 +256,7 @@
 			</ObjectPageSection> -->
 		</sections>
 		<footer>
-			<m:OverflowToolbar>
+			<m:OverflowToolbar class="xsapUxAPObjectPageFooter">
 				<m:ToolbarSpacer/>
 				<m:Button
 					type="Accept"
