@@ -99,6 +99,13 @@
           ]
         },
         {
+          "name": "Login",
+          "pattern": "Login",
+          "target": [
+            "TargetLogin"
+          ]
+        },
+        {
           "name": "RouteCreateCliente",
           "pattern": "RouteCreateCliente",
           "target": [
@@ -126,17 +133,22 @@
           "viewName": "dashboard.Dashboard",
           "transition": "slide"
         },
+        "TargetLogin": {
+          "viewType": "XML",
+          "viewName": "login.Login",
+          "transition": "slide"
+        },
         "TargetCreateCliente": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "cliente",
-          "viewName": "clientes.Create"
+          "viewName": "cliente.Create"
         },
         "TargetListClient": {
           "transition": "slide",
           "viewType": "XML",
-          "viewName": "clientes.List"
+          "viewName": "cliente.List"
         },
         "TargetCalendar": {
           "viewType": "XML",

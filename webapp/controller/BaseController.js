@@ -47,6 +47,29 @@ sap.ui.define([
 			}.bind(this));
 		},
 
+		callAjaxFunctionTcc: function (url, method) {
+			var userModel = this.getModel("userModel");
+			var oUserModel = userModel.getData();
+
+			return new Promise(function (resolved, rejected) {
+				$.ajax({
+					"url": url,
+					"method": method,
+					"timeout": 0,
+					"headers": {
+						"x-api-key": oUserModel.token,
+						"Content-Type": "application/json"
+					},
+					success: function (param) {
+						resolved(param);
+					}.bind(this),
+					error: function (error) {
+						rejected(error);
+					}.bind(this)
+				});
+			}.bind(this));
+		},
+
 		openFragment: function (folder, dialogName) {
 			if (!this[dialogName]) {
 				this[dialogName] = sap.ui.xmlfragment("openBusiness.view." + folder + "." + dialogName, this);

@@ -1,1 +1,21 @@
 /* Enter your custom styles here */
+
+#__toolbar0{
+    background: transparent;
+}
+
+#__xmlview0--clientTable-listUl{
+    table-layout:auto;
+}
+
+.customCellImageBackground {
+	color: #fff;
+	background-image: url("Night_sky.jpg");
+	background-size: 100% auto;
+	background-position: 0 80%;
+}
+
+.customCellImageBackground .sapUiBlockCellContent,
+.customCellImageBackground .sapUiBlockCellContent .sapMText {
+	color: #fff;
+}

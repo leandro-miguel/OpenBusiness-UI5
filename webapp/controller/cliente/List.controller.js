@@ -30,19 +30,13 @@ sap.ui.define([
 
 			onSearch: async function () {
 				
-				
 				var oModel = this.getModel("oModelClientList");
-            	var oModelGeral = this.getModel("oModel");
 				oModel.setProperty("/clientsBusy", true);
 				//var aFilter = this.getFilters(oModel);
 
 				var url = "https://api-erp-tg.herokuapp.com/cliente"
-				var body = JSON.stringify({
-					// "idEmpresa": oModelGeral.getProperty("/idEmpresa"),
-					// "servicoSL": "sml.svc/SDPC_BUSCAREQUISICAOAPROVADOR?$orderby=DocNum&$filter=" + aFilter
-				});
-
-				var promise = this.callAjaxFunction(url, body, "GET");
+				
+				var promise = this.callAjaxFunctionTcc(url, "GET");
 
 				promise.then(function (param) {
 					if (param) {
@@ -61,7 +55,7 @@ sap.ui.define([
 					oModel.setProperty("/currentPageTable", "1");
 					oModel.setProperty("/skipPageTable", "0");
 
-					if (param && param.value && param.value.length < 20) { //no next page
+					if (param && param.length < 20) { //no next page
 						oModel.setProperty("/nextTableButtonEnabled", false);
 					} else {
 						oModel.setProperty("/nextTableButtonEnabled", true);
@@ -75,6 +69,23 @@ sap.ui.define([
 
 				
 			},
+
+			aFilter: function(){
+				var filters = "";
+				var oBundle = this.getResourceBundle();
+				var oModel = this.getModel("oModelClientList");
+				var name = oModel.getProperty("/nameFilter");
+	
+				// Filtro de Filial
+				if (name) {
+					filters += "U_Filial eq '" + oModel.getProperty("/branchFilter") + "' and ";
+				}
+
+				filters += "U_Usuario eq '" + oModelUserData.getProperty("/userId") + "'and U_Tipo_docu eq 'PED'";
+	
+				return filters;
+			},
+	
 
 			navToDetail: function (oEvent) {
 

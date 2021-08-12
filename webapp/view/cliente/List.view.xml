@@ -1,0 +1,185 @@
+<mvc:View
+	controllerName="openBusiness.controller.cliente.List"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:layout="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+	<f:DynamicPage
+		id="dynamicPageId"
+		headerExpanded="{/headerExpanded}"
+		toggleHeaderOnTitleClick="{/titleClickable}"
+	>
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<HBox direction="RowReverse">
+						<Title text="{i18n>titleListClient}"/>
+					</HBox>
+				</f:heading>
+				<f:snappedContent>
+					<Label text="Brasil"/>
+				</f:snappedContent>
+				<f:snappedTitleOnMobile>
+					<Title text="Pedidos"/>
+				</f:snappedTitleOnMobile>
+				<f:actions>
+					<Button
+						activeIcon=""
+						icon=""
+						iconFirst="false"
+						text="Pesquisar"
+						textDirection="RTL"
+						width="auto"
+						press="onSearch"
+					/>
+					<Button
+						activeIcon=""
+						icon=""
+						iconFirst="false"
+						text="Voltar"
+						textDirection="RTL"
+						width="auto"
+						press="onNavBack"
+					/>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- Flexbox é uma boa escolha-->
+		<f:header>
+			<f:DynamicPageHeader>
+				<OverflowToolbar height="100px">
+					<FlexBox
+						alignItems="Center"
+						height="200px"
+					>
+						<layout:VerticalLayout>
+							<Label text="Primeiro nome"/>
+							<SearchField
+								value="{oModelClientList>/firstName}"
+								width="auto"
+							/>
+						</layout:VerticalLayout>
+					</FlexBox>
+					<FlexBox>
+						<layout:VerticalLayout>
+							<Label text="Segundo nome"/>
+							<SearchField
+								value="{oModelClientList>/lastName}"
+								width="auto"
+							/>
+						</layout:VerticalLayout>
+					</FlexBox>
+					<FlexBox>
+						<layout:VerticalLayout>
+							<Label text="Contato"/>
+							<SearchField
+								value="{oModelClientList>/contatoUm}"
+								width="auto"
+							/>
+						</layout:VerticalLayout>
+					</FlexBox>
+					<FlexBox>
+						<layout:VerticalLayout>
+							<Label text="CPF"/>
+							<SearchField
+								value="{oModelClientList>/contatoDois}"
+								width="auto"
+							/>
+						</layout:VerticalLayout>
+					</FlexBox>
+					<FlexBox>
+						<layout:VerticalLayout>
+							<Label text="Cidade"/>
+							<SearchField
+								value="{oModelClientList>/contatoDois}"
+								width="auto"
+							/>
+						</layout:VerticalLayout>
+					</FlexBox>
+					<FlexBox>
+						<layout:VerticalLayout>
+							<Label text="Estado"/>
+							<SearchField
+								value="{oModelClientList>/contatoDois}"
+								width="auto"
+							/>
+						</layout:VerticalLayout>
+					</FlexBox>
+				</OverflowToolbar>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<Table
+				id="clientTable"
+				items="{oModelClientList>/clients}"
+				busy="{oModelClientList>/clientsBusy}"
+				mode="SingleSelectMaster"
+				selectionChange="navToDetail"
+			>
+				<headerToolbar>
+					<Toolbar>
+						<Title
+							text="{oModelClientList>/Title}"
+							level="H2"
+						/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>nameClients}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>phone1}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>phone2}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>cpf}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>city}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>State}"/>
+					</Column>
+					<Column hAlign="End">
+						<Text text=""/>
+					</Column>
+				</columns>
+				<items>
+					<!-- A cor da tabela tem como base o status de aprovaçao -->
+					<ColumnListItem>
+						<cells>
+							<!-- nome -->
+							<Label text="{oModelClientList>firstname} {oModelClientList>lastname}"/>
+							<!-- telefone -->
+							<Label text="{oModelClientList>phone1}"/>
+							<!-- telefone -->
+							<Label text="{oModelClientList>phone2}"/>
+							<!-- cpf -->
+							<Label text="{oModelClientList>cpf}"/>
+							<!-- city -->
+							<Label text="{oModelClientList>city}"/>
+							<!-- Estado -->
+							<Label text="{oModelClientList>state}"/>
+							<!-- navbar -->
+							<Button
+								width="5px"
+								icon="sap-icon://feeder-arrow"
+								type="Transparent"
+								press="navToDetail"
+							/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

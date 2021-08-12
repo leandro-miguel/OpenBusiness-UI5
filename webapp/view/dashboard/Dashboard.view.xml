@@ -4,6 +4,8 @@
 	xmlns:unified="sap.ui.unified"
 	xmlns="sap.m"
 	xmlns:f="sap.f"
+	xmlns:card="sap.f.cards"
+	xmlns:l="sap.ui.layout"
 	xmlns:tnt="sap.tnt"
 	controllerName="openBusiness.controller.dashboard.Dashboard"
 >
@@ -17,7 +19,7 @@
 				showNotifications="true"
 				menuButtonPressed="onMenuButtonPress"
 				showProductSwitcher="false"
-				notificationsNumber=""
+				notificationsNumber="true"
 			>
 				<f:profile>
 					<Avatar initials=""/>
@@ -54,6 +56,7 @@
 						<tnt:NavigationListItem
 							text="{title}"
 							icon="{icon}"
+							key="{key}"
 						/>
 					</tnt:NavigationList>
 				</tnt:fixedItem>
@@ -377,6 +380,110 @@
 								/>
 							</appointments>
 						</SinglePlanningCalendar>
+					</ScrollContainer>
+					<ScrollContainer
+						id="page5"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+					>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Fornecedores"
+							subheader="Cadastro"
+							press="navToClient"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://add"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Fornecedores"
+							subheader="Lista"
+							press="navToClient"
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://list"/>
+							</TileContent>
+						</GenericTile>
+					</ScrollContainer>
+					<ScrollContainer
+						id="page6"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+					>
+						<Label text="teste"/>
+					</ScrollContainer>
+					<ScrollContainer
+						id="page7"
+						horizontal="false"
+						vertical="true"
+						height="100%"
+					>
+					<FlexBox
+					height="600px"
+					alignItems="Center"
+					justifyContent="Center">
+					<f:Card
+							class="sapUiMediumMargin"
+							width="300px"
+						>
+							<f:header>
+								<card:Header
+									title="{i18n>Login}"
+									
+									iconSrc="sap-icon://visits"
+								/>
+							</f:header>
+							<f:content>
+								<FlexBox
+									height="160px"
+									class="sapUiSmallMargin"
+									justifyContent="SpaceBetween"
+								>
+									<HBox justifyContent="SpaceBetween"/>
+									<HBox
+										renderType="Bare"
+										justifyContent="SpaceBetween"
+									>
+									<l:VerticalLayout>
+										<Input placeholder="email" width="265px"/>
+										<Input placeholder="senha" type="Password"/>
+										<FlexBox justifyContent="SpaceAround">
+											<l:HorizontalLayout>
+											<Button
+											width="90px"
+											text="{i18n>Enter}"
+											press=".onBookPress"
+											type="Emphasized"
+											class="sapUiTinyMarginBegin"
+										/>
+										<Button
+											width="90px"
+											text="{i18n>Register}"
+											press=".onBookPress"
+											type="Emphasized"
+											class="sapUiTinyMarginBegin"
+										/>
+										</l:HorizontalLayout>
+										</FlexBox>
+									</l:VerticalLayout>
+									</HBox>
+								</FlexBox>
+
+							</f:content>
+						</f:Card>
+				
+					</FlexBox>
+						
 					</ScrollContainer>
 				</pages>
 			</NavContainer>
