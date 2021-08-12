@@ -58,11 +58,13 @@
 		},
 		{
 			"title": "Painel",
-			"icon": "sap-icon://building"
+			"icon": "sap-icon://building",
+			"visible":false
 		},
 		{
 			"title": "Opções",
-			"icon": "sap-icon://card"
+			"icon": "sap-icon://card",
+			"visible":false
 		}
 	]
 }
