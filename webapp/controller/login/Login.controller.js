@@ -9,7 +9,7 @@ sap.ui.define([
 
 	return Controller.extend("openBusiness.controller.login.Login", {
         onInit: function () {
-            this.getView().setModel(new JSONModel(), "oModelCreateLogin");
+            this.getView().setModel(new JSONModel(), "oModelLogin");
 
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("Login").attachPatternMatched(this._onObjectMatched, this);
@@ -18,7 +18,7 @@ sap.ui.define([
 
         _onObjectMatched: function () {
 
-            var oModel = this.getModel("oModelCreateLogin");
+            var oModel = this.getModel("oModelLogin");
             var oBundle = this.getResourceBundle();
 
             oModel.setProperty("/ViewTitle", oBundle.getText("createClient"));
