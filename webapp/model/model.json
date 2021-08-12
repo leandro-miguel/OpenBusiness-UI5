@@ -28,13 +28,6 @@
 			"items": [{}]
 		},
 		{
-			"title": "Agenda",
-			"icon": "sap-icon://calendar",
-            "key":"page4",
-			"expanded": false,
-			"items": [{}]
-		},
-		{
 			"title": "Materiais",
 			"icon": "sap-icon://measurement-document",
             "key":"page5",
@@ -47,6 +40,20 @@
             "key":"page6",
 			"expanded": false,
 			"items": [{}]
+		},
+		{
+			"title": "Agenda",
+			"icon": "sap-icon://calendar",
+            "key":"page4",
+			"expanded": false,
+			"items": [{}]
+		},
+		{
+			"title": "Localização",
+			"icon": "sap-icon://map",
+            "key":"page9",
+			"expanded": false,
+			"items": [{}]
 		}
 
 	],
@@ -55,6 +62,11 @@
 			"title": "Login",
 			"icon": "sap-icon://employee",
 			"key":"page7"
+		},
+		{
+			"title": "Sair",
+			"icon": "sap-icon://log",
+			"key":"page8"
 		},
 		{
 			"title": "Painel",
