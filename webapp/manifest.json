@@ -99,6 +99,13 @@
           ]
         },
         {
+          "name": "Login",
+          "pattern": "Login",
+          "target": [
+            "TargetLogin"
+          ]
+        },
+        {
           "name": "RouteCreateCliente",
           "pattern": "RouteCreateCliente",
           "target": [
@@ -124,6 +131,11 @@
         "TargetDashboard": {
           "viewType": "XML",
           "viewName": "dashboard.Dashboard",
+          "transition": "slide"
+        },
+        "TargetLogin": {
+          "viewType": "XML",
+          "viewName": "login.Login",
           "transition": "slide"
         },
         "TargetCreateCliente": {

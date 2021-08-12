@@ -73,7 +73,7 @@
 									<m:DatePicker
 										id="dateNasc"
 										width="20rem"
-										displayFormat="short"
+										displayFormat="long"
 										valueFormat="yyyy-MM-dd"
 										value="{oModelCreateClient>/dateNasc}"
 									/>

@@ -46,5 +46,14 @@ sap.ui.define([
             });
         },
 
+		
+		navToLogin: function(oEvent){
+			debugger
+			var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("Login", {
+                
+            });
+		}
+
 	});
 });

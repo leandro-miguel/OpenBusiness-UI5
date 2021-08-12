@@ -52,8 +52,9 @@
 	],
 	"fixedNavigation": [
 		{
-			"title": "Perfil",
-			"icon": "sap-icon://employee"
+			"title": "Login",
+			"icon": "sap-icon://employee",
+			"key":"page7"
 		},
 		{
 			"title": "Painel",

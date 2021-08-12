@@ -1,32 +1,32 @@
 sap.ui.define([
-	"../BaseController",
+    "../BaseController",
     "sap/ui/model/json/JSONModel",
     "../Formatter",
     "sap/m/MessageBox",
-], function(Controller, JSONModel, Formatter, MessageBox) {
-	"use strict";
+], function (Controller, JSONModel, Formatter, MessageBox) {
+    "use strict";
 
-	return Controller.extend("openBusiness.controller.cliente.Create", {
+    return Controller.extend("openBusiness.controller.cliente.Create", {
 
-		onInit: function () {
-			this.getView().setModel(new JSONModel(), "oModelCreateClient");
+        onInit: function () {
+            this.getView().setModel(new JSONModel(), "oModelCreateClient");
 
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			 oRouter.getRoute("RouteCreateCliente").attachPatternMatched(this._onObjectMatched, this);
-			 //oRouter.getRoute("RouteDetailCreate").attachPatternMatched(this._onObjectMatchedDetail, this);
+            oRouter.getRoute("RouteCreateCliente").attachPatternMatched(this._onObjectMatched, this);
+            //oRouter.getRoute("RouteDetailCreate").attachPatternMatched(this._onObjectMatchedDetail, this);
         },
-		_onObjectMatched:function(){
+        _onObjectMatched: function () {
 
-			var oModel = this.getModel("oModelCreateClient");
-			var oBundle = this.getResourceBundle();	
+            var oModel = this.getModel("oModelCreateClient");
+            var oBundle = this.getResourceBundle();
 
-			oModel.setProperty("/ViewTitle", oBundle.getText("createClient"));
-			this.setDateValues();
-		},
+            oModel.setProperty("/ViewTitle", oBundle.getText("createClient"));
+            this.setDateValues();
+        },
 
-		setDateValues: function () {
-	
-			var oModel = this.getModel("oModelCreateClient");
+        setDateValues: function () {
+
+            var oModel = this.getModel("oModelCreateClient");
             var date = new Date();
             var yyyy = date.getFullYear().toString();
             var mm = (date.getMonth() + 2); // getMonth() is zero-based
@@ -48,85 +48,94 @@ sap.ui.define([
                 day = date.getDate().toString();
             }
 
-			oModel.setProperty("/currentDate", date);
-  
+            oModel.setProperty("/currentDate", date);
+
             // this.byId("dataEntrega").setMinDate(new Date());
             // this.byId("dataLancamento").setDateValue(new Date());
             // this.byId("dataDocumento").setDateValue(new Date());
         },
 
-		_onObjectMatchedDetail:function(){
-		
-			var oModel = this.getModel("oModelCreateClient");
-			var oBundle = this.getResourceBundle();	
+        _onObjectMatchedDetail: function () {
 
-			oModel.setProperty("/ViewTitle", oBundle.getText("CreateClient"));
-		},
+            var oModel = this.getModel("oModelCreateClient");
+            var oBundle = this.getResourceBundle();
 
-        onCreate:function(){
-            debugger
+            oModel.setProperty("/ViewTitle", oBundle.getText("CreateClient"));
+        },
+
+        onCreate: function () {
+            
             var oModel = this.getModel("oModelCreateClient");
             var oBundle = this.getResourceBundle();
             this.getView().setBusy(true);
 
             if (this.validateFields(oModel)) { // Valida todos os campos do cabeçalho e da lista de items (caso tenha algum item)
-                    var obj = this.buildObject(oModel);
-                    var url = "https://api-erp-tg.herokuapp.com/cliente";
+                var obj = this.buildObject(oModel);
+                var url = "https://api-erp-tg.herokuapp.com/cliente";
 
-                    if (this.edit) {
-						url = "/destinations/B1Connection/pedidocompraatualizar";
-						obj.servicoSL = "Drafts";
-						obj.campoChave = oModel.getProperty("/DocEntryDocumento");                      
-					}
+                if (this.edit) {
+                    url = "/destinations/B1Connection/pedidocompraatualizar";
+                    obj.servicoSL = "Drafts";
+                    obj.campoChave = oModel.getProperty("/DocEntryDocumento");
+                }
 
-					var data = JSON.stringify(obj);
+                var data = JSON.stringify(obj);
 
-					var promise = this.callAjaxFunction(url, data, "POST");
+                var promise = this.callAjaxFunction(url, data, "POST");
 
-					promise.then(function (param) {
-						if(param.message==="cadastrado"){
-							alert(param.message);
-						}else{
-							alert(param.message);
-						}
-						this.getView().setBusy(false);
-						this.updateScreenInfo();
-					}.bind(this), function (param) {
-						var oBundle = this.getResourceBundle();
-						MessageBox.alert(oBundle.getText("systemUnavailable"));
-						this.getView().setBusy(false);
-					}.bind(this));
-				
-			} else {
-				MessageBox.alert(oBundle.getText("sendMissingFields"));
-				this.getView().setBusy(false);
-			}
+                promise.then(function (param) {
+                    if (param.message === "cadastrado") {
+                        MessageBox.alert(oBundle.getText(param.message), {
+                            onClose: function (oAction) {
+                                this.updateScreenInfo();
+                                window.location.reload();
+                            }.bind(this)
+                        });
+                    } else {
+                        MessageBox.alert(oBundle.getText(param.message), {
+                            onClose: function (oAction) {
+                                this.updateScreenInfo();
+                                window.location.reload();
+                            }.bind(this)
+                        });
+                    }
+                    this.getView().setBusy(false);
+                    this.updateScreenInfo();
+                }.bind(this), function (param) {
+                    var oBundle = this.getResourceBundle();
+                    MessageBox.alert(oBundle.getText("systemUnavailable"));
+                    this.getView().setBusy(false);
+                }.bind(this));
+            } else {
+                MessageBox.alert(oBundle.getText("sendMissingFields"));
+                this.getView().setBusy(false);
+            }
         },
 
-        buildObject: function (oModel) {   
-			
+        buildObject: function (oModel) {
+
             var obj = {};
-        
-            obj.firstName = oModel.getProperty("/firstName")
-            obj.lastName = oModel.getProperty("/lastName");
-			obj.dateNasc = oModel.getProperty("/dateNasc"); //como inverter a data
+
+            obj.firstname = oModel.getProperty("/firstName");
             obj.phone1 = oModel.getProperty("/phone1");
+            obj.lastname = oModel.getProperty("/lastName");
+            obj.datenasc = oModel.getProperty("/dateNasc"); //como inverter a data
             obj.phone2 = oModel.getProperty("/phone2");
-			obj.cpf = oModel.getProperty("/cpf");
-			obj.street = oModel.getProperty("/street");
-			obj.city = oModel.getProperty("/city");
-			obj.cep = oModel.getProperty("/cep");
-			obj.number = oModel.getProperty("/number");
+            obj.cpf = oModel.getProperty("/cpf");
+            obj.street = oModel.getProperty("/street");
+            obj.city = oModel.getProperty("/city");
+            obj.cep = oModel.getProperty("/cep");
+            obj.numberhouse = oModel.getProperty("/number");
             obj.state = oModel.getProperty("/idState");
-			
+
             return obj;
         },
 
-        selectState:function(oEvent){
-            debugger
+        selectState: function (oEvent) {
+            
             var idState = oEvent.getParameter("selectedItem").getProperty("key"),
-            oModel = this.getModel("oModelCreateClient"),
-            oModelGeral = this.getModel("oModel");
+                oModel = this.getModel("oModelCreateClient"),
+                oModelGeral = this.getModel("oModel");
 
             oModelGeral.setProperty("/idState", idState);
             oModel.setProperty("/idState", idState);
@@ -135,7 +144,7 @@ sap.ui.define([
         },
 
         validateFields: function (oModel) {
-        
+
             var auxCount = 0;
 
             if (!oModel.getProperty("/firstName") || oModel.getProperty("/firstName").length === 0) {
@@ -145,7 +154,7 @@ sap.ui.define([
                 oModel.setProperty("/firstNameState", "None");
             }
 
-            
+
             if (!oModel.getProperty("/lastName") || oModel.getProperty("/lastName").length === 0) {
                 oModel.setProperty("/lastNameState", "Error");
                 auxCount++;
@@ -176,27 +185,27 @@ sap.ui.define([
             }
         },
 
-        onCancel: function(){
+        onCancel: function () {
             alert("cancelado");
-			this.updateScreenInfo();
+            this.updateScreenInfo();
         },
 
-		updateScreenInfo: function () {
-			var oModel = this.getModel("oModelCreateClient");
-			oModel.setProperty("/firstName","");
-			oModel.setProperty("/dateNasc","");
-			oModel.setProperty("/cpf","");
-			oModel.setProperty("/lastName","");
-			oModel.setProperty("/Phone","");
-			oModel.setProperty("/phone1","");
-			oModel.setProperty("/Street","");
-			oModel.setProperty("/City","");
-			oModel.setProperty("/cep","");
-			oModel.setProperty("/number","");
-			oModel.setProperty("/State","");
-		},
-		navBack: function () {
+        updateScreenInfo: function () {
+            var oModel = this.getModel("oModelCreateClient");
+            oModel.setProperty("/firstName", "");
+            oModel.setProperty("/dateNasc", "");
+            oModel.setProperty("/cpf", "");
+            oModel.setProperty("/lastName", "");
+            oModel.setProperty("/Phone", "");
+            oModel.setProperty("/phone1", "");
+            oModel.setProperty("/Street", "");
+            oModel.setProperty("/City", "");
+            oModel.setProperty("/cep", "");
+            oModel.setProperty("/number", "");
+            oModel.setProperty("/State", "");
+        },
+        navBack: function () {
             window.history.go(-1);
         },
-	});
+    });
 });

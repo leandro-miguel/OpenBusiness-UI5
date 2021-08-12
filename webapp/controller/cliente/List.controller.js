@@ -29,7 +29,7 @@ sap.ui.define([
 			},
 
 			onSearch: async function () {
-				debugger
+				
 				var oModel = this.getModel("oModelClientList");
 				oModel.setProperty("/clientsBusy", true);
 				//var aFilter = this.getFilters(oModel);
@@ -69,6 +69,23 @@ sap.ui.define([
 
 				
 			},
+
+			aFilter: function(){
+				var filters = "";
+				var oBundle = this.getResourceBundle();
+				var oModel = this.getModel("oModelClientList");
+				var name = oModel.getProperty("/nameFilter");
+	
+				// Filtro de Filial
+				if (name) {
+					filters += "U_Filial eq '" + oModel.getProperty("/branchFilter") + "' and ";
+				}
+
+				filters += "U_Usuario eq '" + oModelUserData.getProperty("/userId") + "'and U_Tipo_docu eq 'PED'";
+	
+				return filters;
+			},
+	
 
 			navToDetail: function (oEvent) {
 

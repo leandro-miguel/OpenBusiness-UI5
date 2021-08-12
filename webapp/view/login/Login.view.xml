@@ -1,0 +1,6 @@
+<mvc:View
+    controllerName="openBusiness.controller.login.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+>
+    
+</mvc:View>
