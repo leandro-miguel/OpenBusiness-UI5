@@ -43,6 +43,7 @@
 						expanded="{expanded}"
 						items="{items}"
 						key="{key}"
+						visible="{oModelLogin>/visible}"
 					>
 						<tnt:NavigationListItem
 							text="{title}"
@@ -57,6 +58,7 @@
 							text="{title}"
 							icon="{icon}"
 							key="{key}"
+							visible="{visible}"
 						/>
 					</tnt:NavigationList>
 				</tnt:fixedItem>
@@ -420,7 +422,97 @@
 						vertical="true"
 						height="100%"
 					>
-						<Label text="teste"/>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Marcenaria"
+							subheader="Subheader"
+							press=""
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://home-share"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Corte e Costura"
+							subheader="Subheader"
+							press=""
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://home-share"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Serralheria"
+							subheader="Subheader"
+							press=""
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://home-share"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Transporte"
+							subheader="Subheader"
+							press=""
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://home-share"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Pedreiro"
+							subheader="Subheader"
+							press=""
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://home-share"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+							header="Encanador"
+							subheader="Subheader"
+							press=""
+						>
+							<TileContent
+								unit="Unit"
+								footer="Footer"
+							>
+								<ImageContent src="sap-icon://home-share"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+						header="Eletricista"
+						subheader="Subheader"
+						press=""
+					>
+						<TileContent
+							unit="Unit"
+							footer="Footer"
+						>
+							<ImageContent src="sap-icon://home-share"/>
+						</TileContent>
+					</GenericTile>
 					</ScrollContainer>
 					<ScrollContainer
 						id="page7"
@@ -428,62 +520,65 @@
 						vertical="true"
 						height="100%"
 					>
-					<FlexBox
-					height="600px"
-					alignItems="Center"
-					justifyContent="Center">
-					<f:Card
-							class="sapUiMediumMargin"
-							width="300px"
+						<FlexBox
+							height="600px"
+							alignItems="Center"
+							justifyContent="Center"
 						>
-							<f:header>
-								<card:Header
-									title="{i18n>Login}"
-									
-									iconSrc="sap-icon://visits"
-								/>
-							</f:header>
-							<f:content>
-								<FlexBox
-									height="160px"
-									class="sapUiSmallMargin"
-									justifyContent="SpaceBetween"
-								>
-									<HBox justifyContent="SpaceBetween"/>
-									<HBox
-										renderType="Bare"
+							<f:Card
+								class="sapUiMediumMargin"
+								width="300px"
+							>
+								<f:header>
+									<card:Header
+										title="{i18n>Login}"
+										iconSrc="sap-icon://visits"
+									/>
+								</f:header>
+								<f:content>
+									<FlexBox
+										height="160px"
+										class="sapUiSmallMargin"
 										justifyContent="SpaceBetween"
 									>
-									<l:VerticalLayout>
-										<Input placeholder="email" width="265px"/>
-										<Input placeholder="senha" type="Password"/>
-										<FlexBox justifyContent="SpaceAround">
-											<l:HorizontalLayout>
-											<Button
-											width="90px"
-											text="{i18n>Enter}"
-											press=".onBookPress"
-											type="Emphasized"
-											class="sapUiTinyMarginBegin"
-										/>
-										<Button
-											width="90px"
-											text="{i18n>Register}"
-											press=".onBookPress"
-											type="Emphasized"
-											class="sapUiTinyMarginBegin"
-										/>
-										</l:HorizontalLayout>
-										</FlexBox>
-									</l:VerticalLayout>
-									</HBox>
-								</FlexBox>
-
-							</f:content>
-						</f:Card>
-				
-					</FlexBox>
-						
+										<HBox justifyContent="SpaceBetween"/>
+										<HBox
+											renderType="Bare"
+											justifyContent="SpaceBetween"
+										>
+											<l:VerticalLayout>
+												<Input
+													placeholder="email"
+													width="265px"
+												/>
+												<Input
+													placeholder="senha"
+													type="Password"
+												/>
+												<FlexBox justifyContent="SpaceAround">
+													<l:HorizontalLayout>
+														<Button
+															width="90px"
+															text="{i18n>Enter}"
+															press=".onBookPress"
+															type="Emphasized"
+															class="sapUiTinyMarginBegin"
+														/>
+														<Button
+															width="90px"
+															text="{i18n>Register}"
+															press=".onBookPress"
+															type="Emphasized"
+															class="sapUiTinyMarginBegin"
+														/>
+													</l:HorizontalLayout>
+												</FlexBox>
+											</l:VerticalLayout>
+										</HBox>
+									</FlexBox>
+								</f:content>
+							</f:Card>
+						</FlexBox>
 					</ScrollContainer>
 				</pages>
 			</NavContainer>
