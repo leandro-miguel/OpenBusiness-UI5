@@ -11,7 +11,7 @@
 >
 	<f:DynamicPage
 		id="dynamicPageId"
-		headerExpanded="{/headerExpanded}"
+		headerExpanded="false"
 		toggleHeaderOnTitleClick="{/titleClickable}"
 	>
 		<!-- DynamicPage Title -->
@@ -54,62 +54,50 @@
 		<f:header>
 			<f:DynamicPageHeader>
 				<OverflowToolbar height="100px">
-					<FlexBox
-						alignItems="Center"
-						height="200px"
-					>
-						<layout:VerticalLayout>
-							<Label text="Primeiro nome"/>
-							<SearchField
-								value="{oModelClientList>/firstName}"
-								width="auto"
-							/>
-						</layout:VerticalLayout>
+					<FlexBox>
+						<FlexBox
+							alignItems="Center"
+							height="200px"
+							displayInline="true"
+						>
+							<layout:VerticalLayout>
+								<Label text="Primeiro nome"/>
+								<Input
+									value="{oModelClientList>/firstName}"
+									width="20rem"
+								/>
+							</layout:VerticalLayout>
+						</FlexBox>
 					</FlexBox>
 					<FlexBox>
-						<layout:VerticalLayout>
-							<Label text="Segundo nome"/>
-							<SearchField
-								value="{oModelClientList>/lastName}"
-								width="auto"
-							/>
-						</layout:VerticalLayout>
+						<FlexBox
+							alignItems="Center"
+							height="200px"
+							displayInline="true"
+						>
+							<layout:VerticalLayout>
+								<Label text="Contato 1"/>
+								<Input
+									value="{oModelClientList>/firstName}"
+									width="20rem"
+								/>
+							</layout:VerticalLayout>
+						</FlexBox>
 					</FlexBox>
 					<FlexBox>
-						<layout:VerticalLayout>
-							<Label text="Contato"/>
-							<SearchField
-								value="{oModelClientList>/contatoUm}"
-								width="auto"
-							/>
-						</layout:VerticalLayout>
-					</FlexBox>
-					<FlexBox>
-						<layout:VerticalLayout>
-							<Label text="CPF"/>
-							<SearchField
-								value="{oModelClientList>/contatoDois}"
-								width="auto"
-							/>
-						</layout:VerticalLayout>
-					</FlexBox>
-					<FlexBox>
-						<layout:VerticalLayout>
-							<Label text="Cidade"/>
-							<SearchField
-								value="{oModelClientList>/contatoDois}"
-								width="auto"
-							/>
-						</layout:VerticalLayout>
-					</FlexBox>
-					<FlexBox>
-						<layout:VerticalLayout>
-							<Label text="Estado"/>
-							<SearchField
-								value="{oModelClientList>/contatoDois}"
-								width="auto"
-							/>
-						</layout:VerticalLayout>
+						<FlexBox
+							alignItems="Center"
+							height="200px"
+							displayInline="true"
+						>
+							<layout:VerticalLayout>
+								<Label text="CPF"/>
+								<Input
+									value="{oModelClientList>/firstName}"
+									width="20rem"
+								/>
+							</layout:VerticalLayout>
+						</FlexBox>
 					</FlexBox>
 				</OverflowToolbar>
 			</f:DynamicPageHeader>

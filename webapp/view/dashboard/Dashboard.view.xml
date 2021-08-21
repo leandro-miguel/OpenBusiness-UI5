@@ -557,14 +557,14 @@
 														<Button
 															width="90px"
 															text="{i18n>Enter}"
-															press=".onBookPress"
+															press="navToEnter"
 															type="Emphasized"
 															class="sapUiTinyMarginBegin"
 														/>
 														<Button
 															width="90px"
 															text="{i18n>Register}"
-															press=".onBookPress"
+															press="onNavRegister"
 															type="Emphasized"
 															class="sapUiTinyMarginBegin"
 														/>
