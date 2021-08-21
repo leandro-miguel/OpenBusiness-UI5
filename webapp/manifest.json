@@ -106,6 +106,13 @@
           ]
         },
         {
+          "name": "Register",
+          "pattern": "Register",
+          "target": [
+            "TargetRegister"
+          ]
+        },
+        {
           "name": "RouteCreateCliente",
           "pattern": "RouteCreateCliente",
           "target": [
@@ -136,6 +143,11 @@
         "TargetLogin": {
           "viewType": "XML",
           "viewName": "login.Login",
+          "transition": "slide"
+        },
+        "TargetRegister": {
+          "viewType": "XML",
+          "viewName": "login.Register",
           "transition": "slide"
         },
         "TargetCreateCliente": {

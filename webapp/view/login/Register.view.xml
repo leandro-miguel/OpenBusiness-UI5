@@ -1,0 +1,355 @@
+<mvc:View
+	controllerName="openBusiness.controller.login.Register"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.uxap"
+	xmlns:layout="sap.ui.layout"
+	xmlns:m="sap.m"
+	height="100%"
+>
+	<ObjectPageLayout
+		id="ObjectPageLayoutCadastro"
+		enableLazyLoading="true"
+		upperCaseAnchorBar="false"
+		showFooter="true"
+	>
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title
+						text="{oModelRegister>/ViewTitle}"
+						wrapping="true"
+					/>
+				</expandedHeading>
+				<snappedHeading>
+					<m:Title
+						text="{oModelRegister>/ViewTitle}"
+						wrapping="true"
+					/>
+				</snappedHeading>
+				<expandedContent>
+					<m:VBox>
+						<m:Text
+							text="{ path: 'oModelRegister>/currentDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy - HH:mm:ss' } }"
+							visible="true"
+						/>
+						<!-- tag para detalhe -->
+						<m:Text
+							text="{i18n>OrderNum}: {oModelClienteCreate>/DocEntryDocumento} {oModelClienteCreate>/numSAP} "
+							visible="{oModelClienteCreate>/EditVisible}"
+						/>
+					</m:VBox>
+				</expandedContent>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+		</headerContent>
+		<sections>
+			<ObjectPageSection
+				titleUppercase="false"
+				title="{i18n>generalInformation}"
+			>
+				<subSections>
+					<ObjectPageSubSection
+						titleUppercase="false"
+						title="{i18n>generalInformation}"
+						mode="Expanded"
+					>
+						<blocks>
+							<layout:HorizontalLayout allowWrapping="true">
+								<layout:VerticalLayout class="sapUiMediumMarginEnd">
+									<m:Label
+										text="{i18n>firstName}"
+										labelFor="nome"
+										required="true"
+									/>
+									<m:Input
+										id="firstName"
+										width="20rem"
+										value="{oModelRegister>/firstName}"
+										valueState="{oModelRegister>/firstNameState}"
+									/>
+									<m:Label text="{i18n>dateNasc}"/>
+									<m:DatePicker
+										id="dateNasc"
+										width="20rem"
+										displayFormat="long"
+										valueFormat="yyyy-MM-dd"
+										value="{oModelRegister>/dateNasc}"
+									/>
+									<m:Label text="{i18n>cpf}"/>
+									<m:MaskInput
+										mask="99999999999"
+										width="20rem"
+										editable="{oModelBusinessPartner>/Editable}"
+										class="sapUiSmallMarginBottom"
+										value="{oModelRegister>/cpf}"
+										valueState="{oModelRegister>/cpfState}"
+										enabled="{oModelRegister>/Enabled}"
+									/>
+								</layout:VerticalLayout>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout allowWrapping="true">
+								<layout:VerticalLayout class="sapUiMediumMarginEnd">
+									<m:Label
+										text="{i18n>lastName}"
+										labelFor="nome"
+										required="true"
+									/>
+									<m:Input
+										id="lastName"
+										width="20rem"
+										type="Tel"
+										value="{oModelRegister>/lastName}"
+										valueState="{oModelRegister>/lastNameState}"
+										busy="{oModelRegister>/contactPersonBusy}"
+									/>
+									<m:Label
+										text="{i18n>phone1}"
+										labelFor="nome"
+										required="true"
+									/>
+									<m:MaskInput
+										mask="(99) 9999-9999"
+										width="20rem"
+										editable="{oModelBusinessPartner>/Editable}"
+										class="sapUiSmallMarginBottom"
+										value="{oModelRegister>/phone1}"
+										valueState="{oModelRegister>/phoneState}"
+										enabled="{oModelRegister>/Enabled}"
+									/>
+									<m:Label text="{i18n>phone2}"/>
+									<m:MaskInput
+										mask="(99) 9999-9999"
+										width="20rem"
+										editable="{oModelBusinessPartner>/Editable}"
+										class="sapUiSmallMarginBottom"
+										value="{oModelRegister>/phone2}"
+										enabled="{oModelRegister>/Enabled}"
+									/>
+								</layout:VerticalLayout>
+							</layout:HorizontalLayout>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection
+				titleUppercase="false"
+				title="{i18n>loginInformation}"
+			>
+				<subSections>
+					<ObjectPageSubSection
+						titleUppercase="false"
+						title="{i18n>loginInformation}"
+						mode="Expanded"
+					>
+						<blocks>
+							<layout:HorizontalLayout allowWrapping="true">
+								<layout:VerticalLayout class="sapUiMediumMarginEnd">
+									<m:Label
+										text="{i18n>mail}"
+										labelFor="nome"
+										required="true"
+									/>
+									<m:Input
+										id="mail"
+										width="20rem"
+										type="Email"
+										value="{oModelRegister>/email}"
+										valueState="{oModelRegister>/emailState}"
+									
+									/>
+									<m:Label
+										text="{i18n>typeLogin}"
+										labelFor="tipo"
+										required="true"
+									/>
+									
+										<m:Select
+											selectedKey="{oModelRegister>/typeLogin}"
+											change="selectType"
+											width="20rem"
+										>
+											<core:Item
+												key=""
+												text=""
+											/>
+											<core:Item
+												key="1"
+												text="Cliente"
+											/>
+                                            <core:Item
+												key="2"
+												text="Prestador de Serviço"
+											/>
+										</m:Select>
+								
+								</layout:VerticalLayout>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout allowWrapping="true">
+								<layout:VerticalLayout class="sapUiMediumMarginEnd">
+									<m:Label
+										text="{i18n>senha}"
+										labelFor="nome"
+										required="true"
+									/>
+									<m:Input
+										id="senha"
+										width="20rem"
+										type="Password"
+										value="{oModelRegister>/senha}"
+										valueState="{oModelRegister>/senhaState}"
+									/>
+									<m:Label
+										text="{i18n>confirmSenha}"
+										labelFor="nome"
+										required="true"
+									/>
+									<m:Input
+										id="confirmarSenha"
+										width="20rem"
+										type="Password"
+										value="{oModelRegister>/senha}"
+										valueState="{oModelRegister>/senhaState}"
+										
+									/>
+								</layout:VerticalLayout>
+							</layout:HorizontalLayout>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection
+				titleUppercase="false"
+				title="{i18n>generalInformation}"
+			>
+				<subSections>
+					<ObjectPageSubSection
+						titleUppercase="false"
+						title="{i18n>Address}"
+						mode="Expanded"
+					>
+						<blocks>
+							<layout:HorizontalLayout allowWrapping="true">
+								<layout:VerticalLayout class="sapUiMediumMarginEnd">
+									<m:InputListItem label="{i18n>Street}">
+										<m:Input
+											placeholder=""
+											value="{oModelRegister>/street}"
+											width="20rem"
+										/>
+									</m:InputListItem>
+									<m:InputListItem label="{i18n>City}">
+										<m:Input
+											placeholder=""
+											value="{oModelRegister>/city}"
+											width="20rem"
+										/>
+									</m:InputListItem>
+									<m:InputListItem label="{i18n>cep}">
+										<m:MaskInput
+											mask="99999-999"
+											width="7rem"
+											editable="{oModelBusinessPartner>/Editable}"
+											class="sapUiSmallMarginBottom"
+											value="{oModelRegister>/cep}"
+											enabled="{oModelRegister>/Enabled}"
+										/>
+									</m:InputListItem>
+									<m:InputListItem label="{i18n>number}">
+										<m:Input
+											placeholder=""
+											value="{oModelRegister>/number}"
+											type="Number"
+											width="5rem"
+										/>
+									</m:InputListItem>
+									<m:InputListItem label="{i18n>State}">
+										<m:Select
+											selectedKey="{oModelRegister>/idState}"
+											change="selectState"
+											width="5rem"
+										>
+											<core:Item
+												key=""
+												text=""
+											/>
+											<core:Item
+												key="SP"
+												text="SP"
+											/>
+											<core:Item
+												key="RJ"
+												text="RJ"
+											/>
+											<core:Item
+												key="MG"
+												text="MG"
+											/>
+											<core:Item
+												key="SC"
+												text="SC"
+											/>
+											<core:Item
+												key="RS"
+												text="RS"
+											/>
+										</m:Select>
+									</m:InputListItem>
+								</layout:VerticalLayout>
+							</layout:HorizontalLayout>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<!-- <ObjectPageSection
+				titleUppercase="false"
+				title="{i18n>generalInformation}"
+			>
+				<subSections>
+					<ObjectPageSubSection
+						titleUppercase="false"
+						title="{i18n>generalInformation}"
+						mode="Expanded"
+					>
+						<blocks>
+							<layout:HorizontalLayout allowWrapping="true">
+								<layout:VerticalLayout class="sapUiMediumMarginEnd">
+									<m:Label
+										text="{i18n>company}"
+										labelFor="selectEmpresa"
+										required="true"
+									/>
+									<m:Input
+										id="selectPessoa3"
+										width="20rem"
+										class="sapUiSmallMarginBottom"
+										type="Text"
+										value="{oModelClienteCreate>/contactPerson}"
+										busy="{oModelClienteCreate>/contactPersonBusy}"
+										editable="true"
+									/>
+								</layout:VerticalLayout>
+							</layout:HorizontalLayout>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection> -->
+		</sections>
+		<footer>
+			<m:OverflowToolbar>
+				<m:ToolbarSpacer/>
+				<m:Button
+					type="Accept"
+					text="{i18n>Create}"
+					press="onCreate"
+				/>
+				<m:Button
+					type="Reject"
+					text="{i18n>Cancel}"
+					press="onCancel"
+				/>
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>
+</mvc:View>

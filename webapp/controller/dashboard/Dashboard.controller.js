@@ -59,13 +59,20 @@ sap.ui.define([
         },
 
 		
-		navToLogin: function(oEvent){
-			debugger
+		navToEnter: function(oEvent){
 			var oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("Login", {
                 
             });
-		}
+		},
+
+		onNavRegister: function(){
+   
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("Register", {
+                
+            });
+        },
 
 	});
 });
