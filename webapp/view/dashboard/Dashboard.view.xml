@@ -75,7 +75,7 @@
 						<GenericTile
 							class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
 							header="Status Loaded - with press event"
-							subheader="Subheader"
+							subheader="Teste"
 							press=""
 						>
 							<TileContent
