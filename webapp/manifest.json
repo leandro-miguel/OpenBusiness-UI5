@@ -69,9 +69,12 @@
       "userModel": {
 				"type": "sap.ui.model.json.JSONModel"
 			},
-			"oModel": {
-				"type": "sap.ui.model.json.JSONModel"
-			}
+      "oCreateModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      },
+      "oListModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      }
     },
     "resources": {
       "css": [

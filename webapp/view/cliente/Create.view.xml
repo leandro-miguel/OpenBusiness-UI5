@@ -17,20 +17,20 @@
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
 					<m:Title
-						text="{oModelCreateClient>/ViewTitle}"
+						text="{oCreateModel>/ViewTitle}"
 						wrapping="true"
 					/>
 				</expandedHeading>
 				<snappedHeading>
 					<m:Title
-						text="{oModelCreateClient>/ViewTitle}"
+						text="{oCreateModel>/ViewTitle}"
 						wrapping="true"
 					/>
 				</snappedHeading>
 				<expandedContent>
 					<m:VBox>
 						<m:Text
-							text="{ path: 'oModelCreateClient>/currentDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy - HH:mm:ss' } }"
+							text="{ path: 'oCreateModel>/currentDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy - HH:mm:ss' } }"
 							visible="true"
 						/>
 						<!-- tag para detalhe -->
@@ -66,8 +66,8 @@
 									<m:Input
 										id="firstName"
 										width="20rem"
-										value="{oModelCreateClient>/firstName}"
-										valueState="{oModelCreateClient>/firstNameState}"
+										value="{oCreateModel>/firstName}"
+										valueState="{oCreateModel>/firstNameState}"
 									/>
 									<m:Label text="{i18n>dateNasc}"/>
 									<m:DatePicker
@@ -75,7 +75,7 @@
 										width="20rem"
 										displayFormat="long"
 										valueFormat="yyyy-MM-dd"
-										value="{oModelCreateClient>/dateNasc}"
+										value="{oCreateModel>/dateNasc}"
 									/>
 									<m:Label text="{i18n>cpf}"/>
 									<m:MaskInput
@@ -83,9 +83,9 @@
 										width="20rem"
 										editable="{oModelBusinessPartner>/Editable}"
 										class="sapUiSmallMarginBottom"
-										value="{oModelCreateClient>/cpf}"
-										valueState="{oModelCreateClient>/cpfState}"
-										enabled="{oModelCreateClient>/Enabled}"
+										value="{oCreateModel>/cpf}"
+										valueState="{oCreateModel>/cpfState}"
+										enabled="{oCreateModel>/Enabled}"
 									/>
 								</layout:VerticalLayout>
 							</layout:HorizontalLayout>
@@ -100,9 +100,9 @@
 										id="lastName"
 										width="20rem"
 										type="Tel"
-										value="{oModelCreateClient>/lastName}"
-										valueState="{oModelCreateClient>/lastNameState}"
-										busy="{oModelCreateClient>/contactPersonBusy}"
+										value="{oCreateModel>/lastName}"
+										valueState="{oCreateModel>/lastNameState}"
+										busy="{oCreateModel>/contactPersonBusy}"
 									/>
 									<m:Label
 										text="{i18n>phone}"
@@ -114,9 +114,9 @@
 										width="20rem"
 										editable="{oModelBusinessPartner>/Editable}"
 										class="sapUiSmallMarginBottom"
-										value="{oModelCreateClient>/phone1}"
-										valueState="{oModelCreateClient>/phoneState}"
-										enabled="{oModelCreateClient>/Enabled}"
+										value="{oCreateModel>/phone1}"
+										valueState="{oCreateModel>/phoneState}"
+										enabled="{oCreateModel>/Enabled}"
 									/>
 									<m:Label text="{i18n>phone1}"/>
 									<m:MaskInput
@@ -124,8 +124,8 @@
 										width="20rem"
 										editable="{oModelBusinessPartner>/Editable}"
 										class="sapUiSmallMarginBottom"
-										value="{oModelCreateClient>/phone2}"
-										enabled="{oModelCreateClient>/Enabled}"
+										value="{oCreateModel>/phone2}"
+										enabled="{oCreateModel>/Enabled}"
 									/>
 								</layout:VerticalLayout>
 							</layout:HorizontalLayout>
@@ -151,14 +151,14 @@
 									<m:InputListItem label="{i18n>Street}">
 										<m:Input
 											placeholder=""
-											value="{oModelCreateClient>/street}"
+											value="{oCreateModel>/street}"
 											width="20rem"
 										/>
 									</m:InputListItem>
 									<m:InputListItem label="{i18n>City}">
 										<m:Input
 											placeholder=""
-											value="{oModelCreateClient>/city}"
+											value="{oCreateModel>/city}"
 											width="20rem"
 										/>
 									</m:InputListItem>
@@ -168,15 +168,15 @@
 										width="7rem"
 										editable="{oModelBusinessPartner>/Editable}"
 										class="sapUiSmallMarginBottom"
-										value="{oModelCreateClient>/cep}"
-										enabled="{oModelCreateClient>/Enabled}"
+										value="{oCreateModel>/cep}"
+										enabled="{oCreateModel>/Enabled}"
 									/>
 									</m:InputListItem>
 									<m:InputListItem 
 									label="{i18n>number}">
 									<m:Input
 										placeholder=""
-										value="{oModelCreateClient>/number}"
+										value="{oCreateModel>/number}"
 										type="Number"
 										width="5rem"
 									/>
@@ -184,7 +184,7 @@
 									
 									<m:InputListItem label="{i18n>State}">
 										<m:Select
-										selectedKey="{oModelCreateClient>/idState}"
+										selectedKey="{oCreateModel>/idState}"
 										change="selectState"
 										width="5rem">
 											<core:Item

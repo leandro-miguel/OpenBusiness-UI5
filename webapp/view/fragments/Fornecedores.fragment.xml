@@ -1,0 +1,30 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m">
+<GenericTile
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+        header="Fornecedores"
+        subheader="Cadastro"
+        press="navToClient"
+    >
+        <TileContent
+            unit="Unit"
+            footer="Footer"
+        >
+            <ImageContent src="sap-icon://add"/>
+        </TileContent>
+    </GenericTile>
+    <GenericTile
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+        header="Fornecedores"
+        subheader="Lista"
+        press="navToClient"
+    >
+        <TileContent
+            unit="Unit"
+            footer="Footer"
+        >
+            <ImageContent src="sap-icon://list"/>
+        </TileContent>
+    </GenericTile>
+    
+</mvc:View>

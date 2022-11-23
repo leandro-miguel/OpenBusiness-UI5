@@ -1,0 +1,65 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m"
+xmlns:f="sap.f"
+xmlns:card="sap.f.cards"
+xmlns:l="sap.ui.layout">
+    <FlexBox
+        height="600px"
+        alignItems="Center"
+        justifyContent="Center"
+    >
+        <f:Card
+            class="sapUiMediumMargin"
+            width="300px"
+        >
+            <f:header>
+                <card:Header
+                    title="{i18n>Login}"
+                    iconSrc="sap-icon://visits"
+                />
+            </f:header>
+            <f:content>
+                <FlexBox
+                    height="160px"
+                    class="sapUiSmallMargin"
+                    justifyContent="SpaceBetween"
+                >
+                    <HBox justifyContent="SpaceBetween"/>
+                    <HBox
+                        renderType="Bare"
+                        justifyContent="SpaceBetween"
+                    >
+                        <l:VerticalLayout>
+                            <Input
+                                placeholder="email"
+                                width="265px"
+                            />
+                            <Input
+                                placeholder="senha"
+                                type="Password"
+                            />
+                            <FlexBox justifyContent="SpaceAround">
+                                <l:HorizontalLayout>
+                                    <Button
+                                        width="90px"
+                                        text="{i18n>Enter}"
+                                        press="navToEnter"
+                                        type="Emphasized"
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                    <Button
+                                        width="90px"
+                                        text="{i18n>Register}"
+                                        press="onNavRegister"
+                                        type="Emphasized"
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                </l:HorizontalLayout>
+                            </FlexBox>
+                        </l:VerticalLayout>
+                    </HBox>
+                </FlexBox>
+            </f:content>
+        </f:Card>
+    </FlexBox>
+</mvc:View>

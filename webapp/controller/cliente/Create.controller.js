@@ -9,16 +9,13 @@ sap.ui.define([
     return Controller.extend("openBusiness.controller.cliente.Create", {
 
         onInit: function () {
-            this.getView().setModel(new JSONModel(), "oModelCreateClient");
-
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("RouteCreateCliente").attachPatternMatched(this._onObjectMatched, this);
-            //oRouter.getRoute("RouteDetailCreate").attachPatternMatched(this._onObjectMatchedDetail, this);
         },
         _onObjectMatched: function () {
 
-            var oModel = this.getModel("oModelCreateClient");
-            var oBundle = this.getResourceBundle();
+            const oModel = this.getModel("oCreateModel");
+            const oBundle = this.getResourceBundle();
 
             oModel.setProperty("/ViewTitle", oBundle.getText("createClient"));
             this.setDateValues();

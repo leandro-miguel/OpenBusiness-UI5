@@ -1,0 +1,94 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m">
+    <GenericTile
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+        header="Marcenaria"
+        subheader="Subheader"
+        press=""
+    >
+        <TileContent
+            unit="Unit"
+            footer="Footer"
+        >
+            <ImageContent src="sap-icon://home-share"/>
+        </TileContent>
+    </GenericTile>
+    <GenericTile
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+        header="Corte e Costura"
+        subheader="Subheader"
+        press=""
+    >
+        <TileContent
+            unit="Unit"
+            footer="Footer"
+        >
+            <ImageContent src="sap-icon://home-share"/>
+        </TileContent>
+    </GenericTile>
+    <GenericTile
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+        header="Serralheria"
+        subheader="Subheader"
+        press=""
+    >
+        <TileContent
+            unit="Unit"
+            footer="Footer"
+        >
+            <ImageContent src="sap-icon://home-share"/>
+        </TileContent>
+    </GenericTile>
+    <GenericTile
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+        header="Transporte"
+        subheader="Subheader"
+        press=""
+    >
+        <TileContent
+            unit="Unit"
+            footer="Footer"
+        >
+            <ImageContent src="sap-icon://home-share"/>
+        </TileContent>
+    </GenericTile>
+    <GenericTile
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+        header="Pedreiro"
+        subheader="Subheader"
+        press=""
+    >
+        <TileContent
+            unit="Unit"
+            footer="Footer"
+        >
+            <ImageContent src="sap-icon://home-share"/>
+        </TileContent>
+    </GenericTile>
+    <GenericTile
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+        header="Encanador"
+        subheader="Subheader"
+        press=""
+    >
+        <TileContent
+            unit="Unit"
+            footer="Footer"
+        >
+            <ImageContent src="sap-icon://home-share"/>
+        </TileContent>
+    </GenericTile>
+    <GenericTile
+        class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+        header="Eletricista"
+        subheader="Subheader"
+        press=""
+    >
+        <TileContent
+            unit="Unit"
+            footer="Footer"
+        >
+            <ImageContent src="sap-icon://home-share"/>
+        </TileContent>
+    </GenericTile>
+</mvc:View>
