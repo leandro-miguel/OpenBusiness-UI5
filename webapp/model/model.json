@@ -6,6 +6,7 @@
 			"icon": "sap-icon://bbyd-dashboard",
 			"key": "dashboard"
 		},
+		
 		{
 			"title": "Clientes",
 			"icon": "sap-icon://employee",
@@ -14,7 +15,7 @@
 			"items": [{}]
 		},
 		{
-			"title": "Funcionários",
+			"title": "Funcionarios",
 			"icon": "sap-icon://company-view",
             "key":"page2",
 			"expanded": false,

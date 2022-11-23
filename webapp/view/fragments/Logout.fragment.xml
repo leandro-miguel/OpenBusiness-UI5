@@ -1,0 +1,56 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m"
+xmlns:f="sap.f"
+xmlns:card="sap.f.cards"
+xmlns:l="sap.ui.layout">
+    <FlexBox
+        height="600px"
+        alignItems="Center"
+        justifyContent="Center"
+    >
+        <f:Card
+            class="sapUiMediumMargin"
+            width="240px"
+        >
+            <f:header>
+                <card:Header
+                    title="Deseja sair do sistema?"
+                    iconSrc="sap-icon://log"
+                />
+            </f:header>
+            <f:content>
+                <FlexBox
+                    height="50px"
+                    class="sapUiSmallMargin"
+                    justifyContent="SpaceBetween"
+                >
+                    <HBox
+                        renderType="Bare"
+                        justifyContent="SpaceBetween"
+                    >
+                        <l:VerticalLayout>
+                            <FlexBox justifyContent="SpaceAround">
+                                <l:HorizontalLayout>
+                                    <Button
+                                        width="90px"
+                                        text="{i18n>Exit}"
+                                        press=".onBookPress"
+                                        type="Emphasized"
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                    <Button
+                                        width="90px"
+                                        text="{i18n>Cancel}"
+                                        press=".onBookPress"
+                                        type="Emphasized"
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                </l:HorizontalLayout>
+                            </FlexBox>
+                        </l:VerticalLayout>
+                    </HBox>
+                </FlexBox>
+            </f:content>
+        </f:Card>
+    </FlexBox>
+</mvc:View>
