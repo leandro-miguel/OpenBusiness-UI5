@@ -1,13 +1,13 @@
 sap.ui.define([
     "../BaseController",
-    "sap/ui/model/json/JSONModel",
+    "../../model/CreateModel",
     "../Formatter",
     "sap/m/MessageBox",
-], function (Controller, JSONModel, Formatter, MessageBox) {
+], function (Controller, CreateModel, Formatter, MessageBox) {
     "use strict";
 
     return Controller.extend("openBusiness.controller.cliente.Create", {
-
+        formatter: Formatter,
         onInit: function () {
             const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("RouteCreateCliente").attachPatternMatched(this._onObjectMatched, this);
@@ -16,14 +16,13 @@ sap.ui.define([
 
             const oModel = this.getModel("oCreateModel");
             const oBundle = this.getResourceBundle();
-
             oModel.setProperty("/ViewTitle", oBundle.getText("createClient"));
             this.setDateValues();
         },
 
         setDateValues: function () {
 
-            var oModel = this.getModel("oModelCreateClient");
+            var oModel = this.getModel("oCreateModel");      
             var date = new Date();
             var yyyy = date.getFullYear().toString();
             var mm = (date.getMonth() + 2); // getMonth() is zero-based
@@ -53,56 +52,45 @@ sap.ui.define([
         },
 
         _onObjectMatchedDetail: function () {
-
-            var oModel = this.getModel("oModelCreateClient");
-            var oBundle = this.getResourceBundle();
-
+            var oModel = this.getModel("oCreateModel");
             oModel.setProperty("/ViewTitle", oBundle.getText("CreateClient"));
         },
 
-        onCreate: function () {
-            
-            var oModel = this.getModel("oModelCreateClient");
-            var oBundle = this.getResourceBundle();
+        async onCreate(){      
+            const oModel = this.getModel("oCreateModel");
+            const userModel = this.getModel("userModel");
+            const oUserModel = userModel.getData();      
+            const oBundle = this.getResourceBundle();
             this.getView().setBusy(true);
 
             if (this.validateFields(oModel)) { // Valida todos os campos do cabeçalho e da lista de items (caso tenha algum item)
-                var obj = this.buildObject(oModel);
-                var url = "https://api-erp-tg.herokuapp.com/cliente";
-
+                const obj = this.buildObject(oModel);
+                const oCreateModel = new CreateModel();
+               
                 if (this.edit) {
                     url = "/destinations/B1Connection/pedidocompraatualizar";
                     obj.servicoSL = "Drafts";
                     obj.campoChave = oModel.getProperty("/DocEntryDocumento");
                 }
+                debugger
+                const data = JSON.stringify(obj);
+                const fnPromise = await oCreateModel.callAjaxFunction(oUserModel.token, data);
 
-                var data = JSON.stringify(obj);
-
-                var promise = this.callAjaxFunction(url, data, "POST");
-
-                promise.then(function (param) {
-                    if (param.message === "cadastrado") {
-                        MessageBox.alert(oBundle.getText(param.message), {
-                            onClose: function (oAction) {
-                                this.updateScreenInfo();
-                                window.location.reload();
-                            }.bind(this)
-                        });
-                    } else {
-                        MessageBox.alert(oBundle.getText(param.message), {
-                            onClose: function (oAction) {
-                                this.updateScreenInfo();
-                                window.location.reload();
-                            }.bind(this)
-                        });
-                    }
-                    this.getView().setBusy(false);
-                    this.updateScreenInfo();
-                }.bind(this), function (param) {
-                    var oBundle = this.getResourceBundle();
-                    MessageBox.alert(oBundle.getText("systemUnavailable"));
-                    this.getView().setBusy(false);
-                }.bind(this));
+                if(fnPromise.message == "cadastrado"){
+                    MessageBox.alert(oBundle.getText(fnPromise.message), {
+                        onClose: () => {
+                            this.updateScreenInfo();
+                            window.location.reload();
+                        }
+                    });
+                }else{
+                    MessageBox.alert(oBundle.getText(fnPromise.message), {
+                        onClose: () => {
+                            this.updateScreenInfo();
+                            window.location.reload();
+                        }
+                    });
+                }
             } else {
                 MessageBox.alert(oBundle.getText("sendMissingFields"));
                 this.getView().setBusy(false);
@@ -131,7 +119,7 @@ sap.ui.define([
         selectState: function (oEvent) {
             
             var idState = oEvent.getParameter("selectedItem").getProperty("key"),
-                oModel = this.getModel("oModelCreateClient"),
+                oModel = this.getModel("oCreateModel");          
                 oModelGeral = this.getModel("oModel");
 
             oModelGeral.setProperty("/idState", idState);
@@ -188,7 +176,7 @@ sap.ui.define([
         },
 
         updateScreenInfo: function () {
-            var oModel = this.getModel("oModelCreateClient");
+            var oModel = this.getModel("oCreateModel");      
             oModel.setProperty("/firstName", "");
             oModel.setProperty("/dateNasc", "");
             oModel.setProperty("/cpf", "");

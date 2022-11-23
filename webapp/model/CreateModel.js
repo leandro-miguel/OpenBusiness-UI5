@@ -5,21 +5,22 @@ sap.ui.define(
     function (Object) {
         "use strict";
         return Object.extend("openBusiness.model.CreateModel", {
+            
             constructor: function () {
                 
             },
 
-            callAjaxFunction: function (url, data, method) {
-                const userModel = this.getModel("userModel");
-                const oUserModel = userModel.getData();
-    
+            callAjaxFunction: function (token, data) {
+                
+                const url = "https://api-erp-tg.herokuapp.com/cliente";
+
                 return new Promise(function (resolved, rejected) {
                     $.ajax({
                         "url": url,
-                        "method": method,
+                        "method": "POST",
                         "timeout": 0,
                         "headers": {
-                            "x-api-key": oUserModel.token,
+                            "x-api-key": token,
                             "Content-Type": "application/json"
                         },
                         "data": data,
@@ -32,7 +33,7 @@ sap.ui.define(
                     });
                 }.bind(this));
             },
-    
+
             callAjaxFunctionTcc: function (url, method) {
                 debugger
                 const userModel = this.getModel("userModel");

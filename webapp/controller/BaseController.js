@@ -1,8 +1,7 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/m/MessageBox",
 	"./Formatter"
-], function (Controller, MessageBox, Formatter) {
+], function (Controller, Formatter) {
 	"use strict";
 	return Controller.extend("openBusiness.controller.BaseController", {
 		formatter: Formatter,
